@@ -34,16 +34,16 @@ namespace Club1
             lblControlPagoDetalleInfoHabilitado.BackColor = pago.ClienteHabilitado ? this.conSeleccionColorLblHabilitado : this.conSeleccionColorLblInhabilitado;
             lblControlPagoDetalleInfoIds.Text = $"Nro. Carnet: {pago.ClienteNroCarnet}\nDNI: {pago.ClienteDni}";
             lblControlPagoDetalleInfoIds.BackColor = this.conSeleccionColorLbl;
-            lblControlPagoDetalleInfoNombre.BackColor = this.conSeleccionColorLblNombre;
+            lblControlPagoDetalleInfoNombre.Visible = true;
+            lblControlPagoDetalleInfoHabilitado.Visible = true;
         }
         public void Clear()
         {
+            lblControlPagoDetalleInfoNombre.Visible = false;
+            lblControlPagoDetalleInfoHabilitado.Visible = false;
             lblControlPagoDetalleInfoIds.Text = this.sinSeleccionMsg;
             lblControlPagoDetalleInfoIds.BackColor = this.sinSeleccionColorLbl;
-            lblControlPagoDetalleInfoHabilitado.Text = string.Empty;
-            lblControlPagoDetalleInfoHabilitado.BackColor = this.sinSeleccionColorLbl;
-            lblControlPagoDetalleInfoNombre.Text = string.Empty;
-            lblControlPagoDetalleInfoNombre.BackColor = this.sinSeleccionColorLbl;
+
         }
 
         private TableLayoutPanel panelControlPagoDetalleInfo;
@@ -107,6 +107,7 @@ namespace Club1
             lblControlPagoDetalleInfoIds.Dock = DockStyle.Fill;
             lblControlPagoDetalleInfoIds.Location = new Point(3, 90);
             lblControlPagoDetalleInfoIds.Name = "lblControlPagoDetalleInfoIds";
+            lblControlPagoDetalleInfoIds.Padding = new Padding(0, 2, 0, 0);
             lblControlPagoDetalleInfoIds.Size = new Size(378, 342);
             lblControlPagoDetalleInfoIds.TabIndex = 2;
             lblControlPagoDetalleInfoIds.Text = "lblControlPagoDetalleInfoIds";

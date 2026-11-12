@@ -16,10 +16,16 @@ namespace Club1
             get;
             set
             {
+                if (field == value)
+                    return;
+
                 field = value;
                 this.btnPagePagosListadoDetalleGenerarComprobante.Enabled = value;
                 this.btnPagePagosListadoDetalleEliminar.Enabled = value;
                 this.btnPagePagosListadoDetalleConsultarProximoVencimiento.Enabled = value;
+
+                if (!value)
+                    this.controlPagoDetalleInfo.Clear();
             }
         }
 

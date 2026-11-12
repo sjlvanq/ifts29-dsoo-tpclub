@@ -72,6 +72,10 @@ namespace Club1
         private void MostrarPagos(IEnumerable<PagoListDTO> pagos)
         {
             pagoBindingSource.DataSource = pagos.ToList();
+            if (pagoBindingSource.Count == 0)
+            {
+                this.controlPagoDetalle.MostrarDetalle(null);
+            }
         }
 
         private void dataGridPagosListadoLista_SelectionChanged(object sender, EventArgs e)
