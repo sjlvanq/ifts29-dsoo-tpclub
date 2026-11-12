@@ -30,6 +30,7 @@ namespace Club1
             panelView2.Visible = false;
             btnShowView2.Visible = true;
             lnkLblBack.Visible = false;
+            controlFiltros.Visible = true;
         }
 
         private void btnShowView2_Click(object? sender, EventArgs e)
@@ -38,6 +39,7 @@ namespace Club1
             panelView2.Visible = true;
             btnShowView2.Visible = false;
             lnkLblBack.Visible = true;
+            controlFiltros.Visible = false;
         }
 
         private void lnkLblBack_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)

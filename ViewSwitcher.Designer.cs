@@ -53,7 +53,7 @@
             layoutViewSwitcher.RowStyles.Add(new RowStyle());
             layoutViewSwitcher.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             layoutViewSwitcher.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            layoutViewSwitcher.Size = new Size(500, 200);
+            layoutViewSwitcher.Size = new Size(959, 200);
             layoutViewSwitcher.TabIndex = 0;
             // 
             // panelView1
@@ -61,7 +61,7 @@
             panelView1.Dock = DockStyle.Fill;
             panelView1.Location = new Point(3, 55);
             panelView1.Name = "panelView1";
-            panelView1.Size = new Size(494, 122);
+            panelView1.Size = new Size(953, 122);
             panelView1.TabIndex = 0;
             // 
             // panelView2
@@ -69,7 +69,7 @@
             panelView2.Dock = DockStyle.Fill;
             panelView2.Location = new Point(3, 183);
             panelView2.Name = "panelView2";
-            panelView2.Size = new Size(494, 14);
+            panelView2.Size = new Size(953, 14);
             panelView2.TabIndex = 0;
             panelView2.Visible = false;
             // 
@@ -88,7 +88,7 @@
             layoutViewSwitcherHeader.Name = "layoutViewSwitcherHeader";
             layoutViewSwitcherHeader.RowCount = 1;
             layoutViewSwitcherHeader.RowStyles.Add(new RowStyle());
-            layoutViewSwitcherHeader.Size = new Size(494, 46);
+            layoutViewSwitcherHeader.Size = new Size(953, 46);
             layoutViewSwitcherHeader.TabIndex = 0;
             // 
             // lnkLblBack
@@ -108,7 +108,7 @@
             btnShowView2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnShowView2.AutoSize = true;
             btnShowView2.BackColor = SystemColors.ButtonHighlight;
-            btnShowView2.Location = new Point(749, 3);
+            btnShowView2.Location = new Point(792, 3);
             btnShowView2.Name = "btnShowView2";
             btnShowView2.Size = new Size(158, 40);
             btnShowView2.TabIndex = 0;
@@ -129,7 +129,7 @@
             // 
             Controls.Add(layoutViewSwitcher);
             Name = "ViewSwitcher";
-            Size = new Size(500, 200);
+            Size = new Size(959, 200);
             layoutViewSwitcher.ResumeLayout(false);
             layoutViewSwitcher.PerformLayout();
             layoutViewSwitcherHeader.ResumeLayout(false);
