@@ -12,7 +12,8 @@ namespace Club1
             // see https://aka.ms/applicationconfiguration.
             Club club = new Club();
             ApplicationConfiguration.Initialize();
-            Application.Run(new formLogin(club));
+            //Application.Run(new formLogin(club));
+            Application.Run(new formMain());
         }
     }
 }

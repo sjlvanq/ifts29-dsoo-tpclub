@@ -1,0 +1,26 @@
+﻿
+
++----------------------------------------------------------------------------+
+|  INSTITUTO DE FORMACIÓN TÉCNICA SUPERIOR N° 29 (IFTS 29)
+|  Tecnicatura Superior en Desarrollo de Software a Distancia
+| 
+|  >> Materia: Desarrollo de Sistemas Orientado a Objetos
+|  >> Período: 2° Cuatrimestre 2026
++----------------------------------------------------------------------------+
+
+Se ha solicitado desarrollar un sistema informático para gestionar parte de las actividades de gestión y administración que en un club deportivo se desarrollan.
+
+Obetivo del Sistema
+Se desea realizar un sistema tal que permita administrar de manera eficiente el servicio prestado a fin de controlar:
+
+1. Registro de los socios y de los no socios
+2. Entrega de carnet y cobro de cuota mensual o diaria
+3. Listado diario de los socios que en la fecha les vence la cuota
+
+Lógica de Negocio a considerar
+1. La cuota se abona por adelantado, en efectivo o tarjeta de crédito
+2. Si se abona con tarjeta de crédito existen promociones en 3 y 6 cuotas
+3. Los socios abonan una cuota mensual y los no socios solamente abonan el costo de la actividad que realizan en el momento según cartilla
+4. Vencido el periodo de pago, automáticamente el socio no puede realizar actividades
+5. Para retomar actividades, debe pagar la cuota
+6. El plazo de pago comienza a correr a partir del día siguiente al vencimiento de la cuota
