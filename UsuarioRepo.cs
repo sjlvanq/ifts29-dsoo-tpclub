@@ -16,7 +16,7 @@ namespace Club1
         {
             using (MySql.Data.MySqlClient.MySqlConnection con = conexion.conectar())
             {
-                string sqlCheck = "SELECT COUNT(*) FROM usuario WHERE usuario = @usuario AND contrasena = @contrasena";
+                string sqlCheck = "SELECT COUNT(*) FROM usuario WHERE nombre_usuario = @usuario AND password_hash = @contrasena";
                 MySql.Data.MySqlClient.MySqlCommand cmdCheck = new MySql.Data.MySqlClient.MySqlCommand(sqlCheck, con);
                 cmdCheck.Parameters.AddWithValue("@usuario", usuario);
                 byte[] bytesEntrada = Encoding.UTF8.GetBytes(contrasena);

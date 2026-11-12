@@ -9,12 +9,17 @@ namespace Club1
     public class Socio
     {
         private String dni;
+        public String Dni { get { return dni; } set { dni = value;  } }
         private String nombre;
+        public String Nombre { get { return nombre; } set { nombre = value; } }
         private String apellido;
+        public String Apellido { get { return apellido; } set { apellido = value;  } }
         private String telefono;
+        public String Telefono { get { return telefono; } set { telefono = value;  } }
         private int nroCarnet;
-        private bool esActivo;
+        public int NroCarnet { get { return nroCarnet; } set { nroCarnet = value;  } }
         private bool tieneAptoFisico;
+        public bool TieneAptoFisico { get { return tieneAptoFisico; } set { tieneAptoFisico = value; } }
 
         // Constructor para registro
         public Socio(String dni, String nombre, String apellido, String telefono)
@@ -35,7 +40,6 @@ namespace Club1
         public String getApellido() { return apellido; }
         public String getTelefono() { return telefono; }
         public int getNroCarnet() { return nroCarnet; }
-        public bool getEsActivo() { return esActivo; }
         public bool getTieneAptoFisico() { return tieneAptoFisico; }
     }
 }
