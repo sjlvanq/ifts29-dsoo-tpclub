@@ -6,6 +6,13 @@ namespace Club1
 {
     public partial class ViewSwitcher : UserControl
     {
+        private bool _showFiltersOnDefaultView = true;
+
+        public void ConfigureFiltersOnDefaultView(bool visible)
+        {
+            _showFiltersOnDefaultView = visible;
+            ResetView();
+        }
         public event EventHandler<FiltroChangedEventArgs>? FiltroChanged;
 
         public ViewSwitcher()
@@ -30,7 +37,7 @@ namespace Club1
             panelView2.Visible = false;
             btnShowView2.Visible = true;
             lnkLblBack.Visible = false;
-            controlFiltros.Visible = true;
+            controlFiltros.Visible = _showFiltersOnDefaultView;
         }
 
         private void btnShowView2_Click(object? sender, EventArgs e)

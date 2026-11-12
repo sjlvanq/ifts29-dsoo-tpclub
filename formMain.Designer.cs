@@ -49,6 +49,7 @@
             panelPagePagos = new TableLayoutPanel();
             viewSwitcherPagos = new ViewSwitcher(components);
             tabPageVencimientos = new TabPage();
+            viewSwitcherVencimientos = new ViewSwitcher(components);
             panelPageVencimientos = new TableLayoutPanel();
             tabPageActividades = new TabPage();
             viewSwitcherActividades = new ViewSwitcher(components);
@@ -377,6 +378,7 @@
             // 
             panelPageVencimientos.ColumnCount = 1;
             panelPageVencimientos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            panelPageVencimientos.Controls.Add(viewSwitcherVencimientos, 0, 0);
             panelPageVencimientos.Dock = DockStyle.Fill;
             panelPageVencimientos.Location = new Point(0, 0);
             panelPageVencimientos.Name = "panelPageVencimientos";
@@ -384,6 +386,31 @@
             panelPageVencimientos.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             panelPageVencimientos.Size = new Size(192, 2);
             panelPageVencimientos.TabIndex = 0;
+            //
+            // viewSwitcherVencimientos
+            //
+            viewSwitcherVencimientos.Dock = DockStyle.Fill;
+            viewSwitcherVencimientos.Location = new Point(3, 3);
+            viewSwitcherVencimientos.Name = "viewSwitcherVencimientos";
+            viewSwitcherVencimientos.Size = new Size(186, 1);
+            viewSwitcherVencimientos.TabIndex = 1;
+            //
+            //
+            viewSwitcherVencimientos.View1.Location = new Point(3, 55);
+            viewSwitcherVencimientos.View1.Name = "panelView1";
+            viewSwitcherVencimientos.View1.Size = new Size(180, 1);
+            viewSwitcherVencimientos.View1.TabIndex = 0;
+            //
+            //
+            viewSwitcherVencimientos.View2.Location = new Point(3, -16);
+            viewSwitcherVencimientos.View2.Name = "panelView2";
+            viewSwitcherVencimientos.View2.Size = new Size(180, 14);
+            viewSwitcherVencimientos.View2.TabIndex = 0;
+            //
+            //
+            viewSwitcherVencimientos.View2Button.Location = new Point(626, 3);
+            viewSwitcherVencimientos.View2Button.Name = "btnShowView2";
+            viewSwitcherVencimientos.View2Button.TabIndex = 0;
             // 
             // tabPageActividades
             // 
@@ -510,5 +537,6 @@
         private ViewSwitcher viewSwitcherPagos;
         private TextBox lblMainNotes;
         private ViewSwitcher viewSwitcherActividades;
+        private ViewSwitcher viewSwitcherVencimientos;
     }
 }

@@ -21,6 +21,12 @@ namespace Club1
         {
             InitializeComponent();
 
+            if (viewSwitcherVencimientos == null)
+            {
+                viewSwitcherVencimientos = new ViewSwitcher(components);
+                panelPageVencimientos.Controls.Add(viewSwitcherVencimientos, 0, 0);
+            }
+
             toolStripStatusLabelMain.Text = DefaultStatusText;
             statusStripMain.Visible = true;
             tabControlMain.MouseLeave += TabControlMain_MouseLeave;
@@ -51,7 +57,15 @@ namespace Club1
             };
 
             this.viewSwitcherPagos.View2Button.Text = "Registrar Pago";
+
+            this.viewSwitcherVencimientos.View2Button.Text = "Próximo Vencimiento para Cliente";
+            var controlVencimientosListado = new ControlVencimientosListado() { Dock = DockStyle.Fill };
+            this.viewSwitcherVencimientos.View1.Controls.Add(controlVencimientosListado);
             
+            this.viewSwitcherVencimientos.Filtros.Visible = false;
+            this.viewSwitcherVencimientos.ConfigureFiltersOnDefaultView(false);
+
+
             this.viewSwitcherActividades.View2Button.Text = "Nueva Actividad";
             var controlActividadesListado = new ControlActividadesListado() { Dock = DockStyle.Fill };
             this.viewSwitcherActividades.View1.Controls.Add(controlActividadesListado);
@@ -123,6 +137,9 @@ namespace Club1
                             break;
                         case "tabPagePagos":
                             viewSwitcherPagos.ResetView();
+                            break;
+                        case "tabPageVencimientos":
+                            viewSwitcherVencimientos.ResetView();
                             break;
                     }
                 }
