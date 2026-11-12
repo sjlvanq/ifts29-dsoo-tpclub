@@ -21,11 +21,16 @@ namespace Club1
             get;
             set
             {
+                if (field == value)
+                    return;
+
                 field = value;
                 this.btnPageClientesListadoDetalleGenerarCarnet.Enabled = value;
                 this.btnPageClientesListadoDetalleEliminar.Enabled = value;
                 this.btnPageClientesListadoDetalleConsultarPagos.Enabled = value;
-                this.ControlClienteDetalleLabel1.Clear();
+
+                if (!value)
+                    this.ControlClienteDetalleLabel1.Clear();
             }
         }
 
