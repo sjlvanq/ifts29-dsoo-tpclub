@@ -25,6 +25,7 @@ namespace Club1
                 this.btnPageClientesListadoDetalleGenerarCarnet.Enabled = value;
                 this.btnPageClientesListadoDetalleEliminar.Enabled = value;
                 this.btnPageClientesListadoDetalleConsultarPagos.Enabled = value;
+                this.ControlClienteDetalleLabel1.Clear();
             }
         }
 
