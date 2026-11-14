@@ -22,6 +22,7 @@ namespace Club1
         public int NroCarnet { get { return nroCarnet; } set { nroCarnet = value;  } }
         private bool tieneAptoFisico;
         public bool TieneAptoFisico { get { return tieneAptoFisico; } set { tieneAptoFisico = value; } }
+        public bool EsSocio { get; set; }
 
         // Constructor para registro
         public Socio(String dni, String nombre, String apellido, String telefono)

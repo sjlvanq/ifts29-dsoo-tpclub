@@ -22,7 +22,7 @@ namespace Club1
         public bool registrar(Socio socio)
         {
             using MySqlConnection con = conexion.conectar();
-            string sqlInsert = "INSERT INTO cliente (dni, nombre, apellido, telefono, apto_fisico) VALUES (@dni, @nom, @ape, @tel, @apto)";
+            string sqlInsert = "INSERT INTO cliente (dni, nombre, apellido, telefono, apto_fisico, es_socio) VALUES (@dni, @nom, @ape, @tel, @apto, 0)";
             using MySqlCommand cmdInsert = new MySqlCommand(sqlInsert, con);
             cmdInsert.Parameters.AddWithValue("@dni", socio.getDni());
             cmdInsert.Parameters.AddWithValue("@nom", socio.getNombre());
@@ -53,6 +53,8 @@ namespace Club1
                 socio.NroCarnet = reader.IsDBNull(ordinalCarnet) ? 0 : reader.GetInt32(ordinalCarnet);
                 int ordinalApto = reader.GetOrdinal("apto_fisico");
                 socio.TieneAptoFisico = !reader.IsDBNull(ordinalApto) && Convert.ToInt32(reader.GetValue(ordinalApto)) == 1;
+                int ordinalEsSocio = reader.GetOrdinal("es_socio");
+                socio.EsSocio = !reader.IsDBNull(ordinalEsSocio) && Convert.ToInt32(reader.GetValue(ordinalEsSocio)) == 1;
                 socios.Add(socio);
             }
             return socios;
@@ -84,7 +86,35 @@ namespace Club1
             socio.NroCarnet = reader.IsDBNull(ordinalCarnet) ? 0 : reader.GetInt32(ordinalCarnet);
             int ordinalApto = reader.GetOrdinal("apto_fisico");
             socio.TieneAptoFisico = !reader.IsDBNull(ordinalApto) && Convert.ToInt32(reader.GetValue(ordinalApto)) == 1;
+            int ordinalEsSocio = reader.GetOrdinal("es_socio");
+            socio.EsSocio = !reader.IsDBNull(ordinalEsSocio) && Convert.ToInt32(reader.GetValue(ordinalEsSocio)) == 1;
             return socio;
+        }
+
+        public ContratacionResultado contratarPlan(int idCliente, int idPlan, int idPromocion, DateTime? fechaInicio = null)
+        {
+            using MySqlConnection con = conexion.conectar();
+            using MySqlCommand command = new("sp_contratar_plan", con)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add("@p_id_cliente", MySqlDbType.Int32).Value = idCliente;
+            command.Parameters.Add("@p_id_plan", MySqlDbType.Int32).Value = idPlan;
+            command.Parameters.Add("@p_id_promocion", MySqlDbType.Int32).Value = idPromocion;
+            command.Parameters.Add("@p_fecha_inicio", MySqlDbType.Date).Value =
+                fechaInicio.HasValue ? fechaInicio.Value.Date : DBNull.Value;
+
+            using MySqlDataReader reader = command.ExecuteReader();
+            if (!reader.Read())
+            {
+                throw new InvalidOperationException("La contratación no devolvió resultados.");
+            }
+
+            return new ContratacionResultado(
+                reader.GetInt32(reader.GetOrdinal("id_contrato")),
+                reader.GetInt32(reader.GetOrdinal("nro_carnet")),
+                reader.GetInt32(reader.GetOrdinal("cuotas")),
+                reader.GetDecimal(reader.GetOrdinal("importe_cuota")));
         }
     }
 }

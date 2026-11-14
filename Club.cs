@@ -22,5 +22,10 @@ namespace Club1
 
             throw new InvalidOperationException("Error al registrar el socio.");
         }
+
+        public ContratacionResultado contratarPlan(int idCliente, int idPlan, int idPromocion, DateTime? fechaInicio = null)
+        {
+            return socioRepo.contratarPlan(idCliente, idPlan, idPromocion, fechaInicio);
+        }
     }
 }
