@@ -9,12 +9,11 @@ namespace Club1
     public partial class ControlPagosListado : UserControl
     {
         private List<PagoListDTO> todosLosPagos = new();
-        private PagoRepo pagoRepo;
+        private readonly PagoRepo pagoRepo = new();
 
         public ControlPagosListado()
         {
             InitializeComponent();
-            this.pagoRepo = new PagoRepo();
             todosLosPagos = pagoRepo.obtenerTodos();
 
             MostrarPagos(todosLosPagos);
