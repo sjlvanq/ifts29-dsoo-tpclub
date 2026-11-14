@@ -149,7 +149,7 @@ namespace Club1
             return pagos;
         }
 
-        public Pago obtenerPorId(int idPago)
+        public Pago? obtenerPorId(int idPago)
         {
             using (MySqlConnection con = conexion.conectar())
             {
