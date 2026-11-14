@@ -15,21 +15,31 @@ namespace Club1
             if (pago == null)
                 throw new ArgumentNullException(nameof(pago));
 
-            using (MySqlConnection con = conexion.conectar())
+            using MySqlConnection con = conexion.conectar();
+            string procedure = pago.EsCuota
+                ? "sp_registrar_pago_cuota"
+                : "sp_registrar_pago_actividad";
+            using MySqlCommand command = new(procedure, con)
             {
-                string sqlInsert = @"INSERT INTO pago (id_cliente, id_cuota, id_actividad, id_usuario, medio_pago, importe)
-                                     VALUES (@idCliente, @idCuota, @idActividad, @idUsuario, @medioPago, @importe)";
+                CommandType = System.Data.CommandType.StoredProcedure
+            };
 
-                MySqlCommand cmdInsert = new MySqlCommand(sqlInsert, con);
-                cmdInsert.Parameters.AddWithValue("@idCliente", pago.IdCliente);
-                cmdInsert.Parameters.AddWithValue("@idCuota", pago.IdCuota ?? (object)DBNull.Value);
-                cmdInsert.Parameters.AddWithValue("@idActividad", pago.IdActividad ?? (object)DBNull.Value);
-                cmdInsert.Parameters.AddWithValue("@idUsuario", pago.IdUsuario);
-                cmdInsert.Parameters.AddWithValue("@medioPago", pago.MedioPago);
-                cmdInsert.Parameters.AddWithValue("@importe", pago.Importe);
-
-                return cmdInsert.ExecuteNonQuery() > 0;
+            if (pago.EsCuota)
+            {
+                command.Parameters.Add("@p_id_cuota", MySqlDbType.Int32).Value = pago.IdCuota!.Value;
+                command.Parameters.Add("@p_id_usuario", MySqlDbType.Int32).Value = pago.IdUsuario;
+                command.Parameters.Add("@p_medio_pago", MySqlDbType.VarChar, 10).Value = pago.MedioPago;
             }
+            else
+            {
+                command.Parameters.Add("@p_id_cliente", MySqlDbType.Int32).Value = pago.IdCliente;
+                command.Parameters.Add("@p_id_actividad", MySqlDbType.Int32).Value = pago.IdActividad!.Value;
+                command.Parameters.Add("@p_id_usuario", MySqlDbType.Int32).Value = pago.IdUsuario;
+                command.Parameters.Add("@p_medio_pago", MySqlDbType.VarChar, 10).Value = pago.MedioPago;
+            }
+
+            using MySqlDataReader reader = command.ExecuteReader();
+            return reader.Read();
         }
 
         public List<PagoListDTO> obtenerTodos()
