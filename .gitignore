@@ -40,3 +40,6 @@ publish/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Internal documentation files
+doc-internal/
