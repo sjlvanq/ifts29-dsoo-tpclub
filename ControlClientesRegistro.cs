@@ -7,9 +7,11 @@ namespace Club1
     {
 
         public event EventHandler? ClienteRegistrado;
+        private readonly Club club;
 
-        public ControlClientesRegistro()
+        public ControlClientesRegistro(Club club)
         {
+            this.club = club ?? throw new ArgumentNullException(nameof(club));
             InitializeComponent();
             btnPageClientesRegistroRegistrar.Click += BtnRegistrar_Click;
             btnPageClientesRegistroLimpiar.Click += (_, _) => Limpiar();
@@ -27,7 +29,6 @@ namespace Club1
                 );
                 socio.TieneAptoFisico = chkPageClientesRegistroFieldsHealthCert.Checked;
 
-                Club club = new Club();
                 club.registrarSocio(socio);
 
                 MessageBox.Show("Cliente registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -53,7 +53,9 @@ namespace Club1
                 new FiltroField(nameof(Socio.Apellido), "Apellido")
             });
 
-            this.viewSwitcherClientes.View2.Controls.Add(new ControlClientesRegistro() { Dock = DockStyle.Fill });
+            var controlClientesRegistro = new ControlClientesRegistro(club) { Dock = DockStyle.Fill };
+            controlClientesRegistro.ClienteRegistrado += (_, _) => controlClientesListado.Recargar();
+            this.viewSwitcherClientes.View2.Controls.Add(controlClientesRegistro);
             this.viewSwitcherClientes.FiltroChanged += controlClientesListado.AplicarFiltro;
             this.viewSwitcherClientes.PagosHistorialRequested += (sender, args) => {
                 this.viewSwitcherPagos.Filtros.SetFiltro(nameof(PagoListDTO.ClienteDni), args.ClienteDni);
