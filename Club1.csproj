@@ -13,6 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FormLoginAndDbConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormLoginAndDbConnection.Designer.cs">
+      <DependentUpon>FormLoginAndDbConnection.cs</DependentUpon>
+    </Compile>
     <Compile Update="ControlActividadesListado.cs">
       <SubType>UserControl</SubType>
     </Compile>

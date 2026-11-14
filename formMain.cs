@@ -16,14 +16,18 @@ namespace Club1
     {
         private const string DefaultHomeTitleText = "Sistema de Gestión de Club Deportivo";
         private const string DefaultStatusText = "Sistema de Gestión de Club Deportivo";
+        private readonly Club club;
+        private readonly int usuarioId;
 
-        public formMain()
+        public formMain(Club club, int usuarioId)
         {
+            this.club = club ?? throw new ArgumentNullException(nameof(club));
+            this.usuarioId = usuarioId;
             InitializeComponent();
 
             if (viewSwitcherVencimientos == null)
             {
-                viewSwitcherVencimientos = new ViewSwitcher(components);
+                viewSwitcherVencimientos = new ViewSwitcher(components!);
                 panelPageVencimientos.Controls.Add(viewSwitcherVencimientos, 0, 0);
             }
 
