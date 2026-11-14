@@ -46,8 +46,8 @@ namespace Club1
 
         }
 
-        private TableLayoutPanel panelControlPagoDetalleInfo;
-        private Label lblControlPagoDetalleInfoNombre;
+        private TableLayoutPanel panelControlPagoDetalleInfo = null!;
+        private Label lblControlPagoDetalleInfoNombre = null!;
 
         private void InitializeComponent()
         {
@@ -123,7 +123,7 @@ namespace Club1
 
         }
 
-        private Label lblControlPagoDetalleInfoHabilitado;
-        private Label lblControlPagoDetalleInfoIds;
+        private Label lblControlPagoDetalleInfoHabilitado = null!;
+        private Label lblControlPagoDetalleInfoIds = null!;
     }
 }
