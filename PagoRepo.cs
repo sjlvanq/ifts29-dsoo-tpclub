@@ -8,7 +8,7 @@ namespace Club1
 {
     internal class PagoRepo
     {
-        Conexion conexion = new Conexion();
+        private readonly Conexion conexion = new();
 
         public bool registrar(Pago pago)
         {
