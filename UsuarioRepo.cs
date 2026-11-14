@@ -19,10 +19,7 @@ namespace Club1
                 string sqlCheck = "SELECT COUNT(*) FROM usuario WHERE nombre_usuario = @usuario AND password_hash = @contrasena";
                 MySql.Data.MySqlClient.MySqlCommand cmdCheck = new MySql.Data.MySqlClient.MySqlCommand(sqlCheck, con);
                 cmdCheck.Parameters.AddWithValue("@usuario", usuario);
-                byte[] bytesEntrada = Encoding.UTF8.GetBytes(contrasena);
-                byte[] bytesHash = SHA256.HashData(bytesEntrada);
-                string hash = Convert.ToHexString(bytesHash).ToLower();
-                cmdCheck.Parameters.AddWithValue("@contrasena", hash);
+                cmdCheck.Parameters.AddWithValue("@contrasena", Crypto.createSHA256Hash(contrasena));
                 int existe = Convert.ToInt32(cmdCheck.ExecuteScalar());
                 return existe > 0;
             }
