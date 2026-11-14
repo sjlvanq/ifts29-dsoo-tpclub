@@ -57,7 +57,7 @@ namespace Club1
                     p.ClienteDni.ToString().Contains(texto, StringComparison.OrdinalIgnoreCase)),
                 
                 nameof(PagoListDTO.ClienteNroCarnet) => todosLosPagos.Where(p =>
-                    p.ClienteNroCarnet.ToString().Contains(texto, StringComparison.OrdinalIgnoreCase)),
+                    (p.ClienteNroCarnet ?? string.Empty).Contains(texto, StringComparison.OrdinalIgnoreCase)),
                 
                     /*
                                 nameof(Pago.Cliente.Nombre) => todosLosPagos.Where(p =>
