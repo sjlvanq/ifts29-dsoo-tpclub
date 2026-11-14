@@ -21,7 +21,7 @@ namespace Club1
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if(usuarioRepo.accesoPermitido(txtUsuario.Text, txtContrasena.Text))
+            if (usuarioRepo.accesoPermitido(txtUsuario.Text, txtContrasena.Text))
             {
                 new formRegistroSocio(club).Show();
                 this.Hide();
