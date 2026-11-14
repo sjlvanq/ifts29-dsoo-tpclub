@@ -8,6 +8,8 @@ namespace Club1
 {
     public class Socio
     {
+        private int idCliente;
+        public int IdCliente { get { return idCliente; } set { idCliente = value; } }
         private String dni;
         public String Dni { get { return dni; } set { dni = value;  } }
         private String nombre;
