@@ -40,8 +40,7 @@
             // 
             // panelPageClientesListadoDetalle
             // 
-            panelPageClientesListadoDetalle.AutoSize = true;
-            panelPageClientesListadoDetalle.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panelPageClientesListadoDetalle.AutoSize = false;
             panelPageClientesListadoDetalle.ColumnCount = 2;
             panelPageClientesListadoDetalle.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             panelPageClientesListadoDetalle.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
@@ -66,7 +65,8 @@
             // 
             // panelPageClientesListadoDetalleAcciones
             // 
-            panelPageClientesListadoDetalleAcciones.AutoSize = true;
+            panelPageClientesListadoDetalleAcciones.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelPageClientesListadoDetalleAcciones.AutoSize = false;
             panelPageClientesListadoDetalleAcciones.ColumnCount = 1;
             panelPageClientesListadoDetalleAcciones.ColumnStyles.Add(new ColumnStyle());
             panelPageClientesListadoDetalleAcciones.Controls.Add(btnPageClientesListadoDetalleEliminar, 0, 2);
@@ -84,8 +84,8 @@
             // 
             // btnPageClientesListadoDetalleEliminar
             // 
-            btnPageClientesListadoDetalleEliminar.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnPageClientesListadoDetalleEliminar.AutoSize = true;
+            btnPageClientesListadoDetalleEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPageClientesListadoDetalleEliminar.AutoSize = false;
             btnPageClientesListadoDetalleEliminar.Location = new Point(3, 330);
             btnPageClientesListadoDetalleEliminar.Name = "btnPageClientesListadoDetalleEliminar";
             btnPageClientesListadoDetalleEliminar.Size = new Size(304, 35);
@@ -95,8 +95,8 @@
             // 
             // btnPageClientesListadoDetalleConsultarPagos
             // 
-            btnPageClientesListadoDetalleConsultarPagos.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnPageClientesListadoDetalleConsultarPagos.AutoSize = true;
+            btnPageClientesListadoDetalleConsultarPagos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPageClientesListadoDetalleConsultarPagos.AutoSize = false;
             btnPageClientesListadoDetalleConsultarPagos.Location = new Point(3, 191);
             btnPageClientesListadoDetalleConsultarPagos.Name = "btnPageClientesListadoDetalleConsultarPagos";
             btnPageClientesListadoDetalleConsultarPagos.Size = new Size(304, 35);
@@ -107,8 +107,8 @@
             // 
             // btnPageClientesListadoDetalleGenerarCarnet
             // 
-            btnPageClientesListadoDetalleGenerarCarnet.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnPageClientesListadoDetalleGenerarCarnet.AutoSize = true;
+            btnPageClientesListadoDetalleGenerarCarnet.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPageClientesListadoDetalleGenerarCarnet.AutoSize = false;
             btnPageClientesListadoDetalleGenerarCarnet.Location = new Point(3, 52);
             btnPageClientesListadoDetalleGenerarCarnet.Name = "btnPageClientesListadoDetalleGenerarCarnet";
             btnPageClientesListadoDetalleGenerarCarnet.Size = new Size(304, 35);
@@ -118,7 +118,7 @@
             // 
             // ControlClienteDetalleLabel1
             // 
-            ControlClienteDetalleLabel1.AutoSize = true;
+            ControlClienteDetalleLabel1.AutoSize = false;
             ControlClienteDetalleLabel1.BackColor = Color.Gray;
             ControlClienteDetalleLabel1.Dock = DockStyle.Fill;
             ControlClienteDetalleLabel1.Location = new Point(3, 0);

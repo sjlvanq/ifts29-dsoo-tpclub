@@ -40,8 +40,7 @@
             // 
             // panelPagePagosListadoDetalle
             // 
-            panelPagePagosListadoDetalle.AutoSize = true;
-            panelPagePagosListadoDetalle.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panelPagePagosListadoDetalle.AutoSize = false;
             panelPagePagosListadoDetalle.ColumnCount = 2;
             panelPagePagosListadoDetalle.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             panelPagePagosListadoDetalle.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
@@ -67,7 +66,8 @@
             // 
             // panelPagePagosListadoDetalleAcciones
             // 
-            panelPagePagosListadoDetalleAcciones.AutoSize = true;
+            panelPagePagosListadoDetalleAcciones.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelPagePagosListadoDetalleAcciones.AutoSize = false;
             panelPagePagosListadoDetalleAcciones.ColumnCount = 1;
             panelPagePagosListadoDetalleAcciones.ColumnStyles.Add(new ColumnStyle());
             panelPagePagosListadoDetalleAcciones.Controls.Add(btnPagePagosListadoDetalleEliminar, 0, 2);
@@ -85,8 +85,8 @@
             // 
             // btnPagePagosListadoDetalleEliminar
             // 
-            btnPagePagosListadoDetalleEliminar.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnPagePagosListadoDetalleEliminar.AutoSize = true;
+            btnPagePagosListadoDetalleEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPagePagosListadoDetalleEliminar.AutoSize = false;
             btnPagePagosListadoDetalleEliminar.Location = new Point(3, 330);
             btnPagePagosListadoDetalleEliminar.Name = "btnPagePagosListadoDetalleEliminar";
             btnPagePagosListadoDetalleEliminar.Size = new Size(304, 35);
@@ -96,8 +96,8 @@
             // 
             // btnPagePagosListadoDetalleConsultarProximoVencimiento
             // 
-            btnPagePagosListadoDetalleConsultarProximoVencimiento.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnPagePagosListadoDetalleConsultarProximoVencimiento.AutoSize = true;
+            btnPagePagosListadoDetalleConsultarProximoVencimiento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPagePagosListadoDetalleConsultarProximoVencimiento.AutoSize = false;
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Location = new Point(3, 191);
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Name = "btnPagePagosListadoDetalleConsultarProximoVencimiento";
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Size = new Size(304, 35);
@@ -107,8 +107,8 @@
             // 
             // btnPagePagosListadoDetalleGenerarComprobante
             // 
-            btnPagePagosListadoDetalleGenerarComprobante.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnPagePagosListadoDetalleGenerarComprobante.AutoSize = true;
+            btnPagePagosListadoDetalleGenerarComprobante.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPagePagosListadoDetalleGenerarComprobante.AutoSize = false;
             btnPagePagosListadoDetalleGenerarComprobante.Location = new Point(3, 52);
             btnPagePagosListadoDetalleGenerarComprobante.Name = "btnPagePagosListadoDetalleGenerarComprobante";
             btnPagePagosListadoDetalleGenerarComprobante.Size = new Size(304, 35);
@@ -119,7 +119,7 @@
             // 
             // controlPagoDetalleInfo
             // 
-            controlPagoDetalleInfo.AutoSize = true;
+            controlPagoDetalleInfo.AutoSize = false;
             controlPagoDetalleInfo.BackColor = Color.Gray;
             controlPagoDetalleInfo.Dock = DockStyle.Fill;
             controlPagoDetalleInfo.Location = new Point(3, 0);
