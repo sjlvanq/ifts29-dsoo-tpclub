@@ -8,7 +8,7 @@ namespace Club1
 {
     public partial class ControlVencimientosListado : UserControl
     {
-        private readonly List<Vencimiento> vencimientos;
+        private List<Vencimiento> vencimientos = new();
         private readonly VencimientoRepo vencimientoRepo;
 
         private readonly String encabezadoMsg = $"Vencimientos Hoy ({DateTime.Today:dd/MM/yyyy})";
@@ -24,41 +24,12 @@ namespace Club1
             this.dataGridVencimientosListadoLista.AutoGenerateColumns = true;
         }
 
-        public ControlVencimientosListado(IContainer container)
+        public void Recargar()
         {
-            container.Add(this);
-
-            InitializeComponent();
+            vencimientos.Clear();
+            vencimientos.AddRange(vencimientoRepo.obtenerVencimientos());
+            MostrarVencimientos(vencimientos);
         }
-
-        /*
-        public void AplicarFiltro(object? sender, FiltroChangedEventArgs e)
-        {
-            string texto = e.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(texto) || string.IsNullOrEmpty(e.Field))
-            {
-                MostrarPagos(todosLosPagos);
-                return;
-            }
-
-            IEnumerable<PagoListDTO> resultado = e.Field switch
-            {
-                nameof(PagoListDTO.ClienteDni) => todosLosPagos.Where(p =>
-                    p.ClienteDni.ToString().Contains(texto, StringComparison.OrdinalIgnoreCase)),
-
-                nameof(PagoListDTO.ClienteNroCarnet) => todosLosPagos.Where(p =>
-                    p.ClienteNroCarnet.ToString().Contains(texto, StringComparison.OrdinalIgnoreCase)),
-
-                nameof(Pago.FechaPago) => todosLosPagos.Where(p =>
-                    p.FechaPago.ToString().Contains(texto, StringComparison.OrdinalIgnoreCase)),
-
-                _ => todosLosPagos
-            };
-
-            MostrarPagos(resultado);
-        }
-        */
 
         private void MostrarVencimientos(IEnumerable<Vencimiento> vencimientos)
         {

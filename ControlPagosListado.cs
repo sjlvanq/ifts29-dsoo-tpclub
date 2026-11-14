@@ -8,8 +8,8 @@ namespace Club1
 {
     public partial class ControlPagosListado : UserControl
     {
-        private readonly List<PagoListDTO> todosLosPagos;
-        PagoRepo pagoRepo;
+        private List<PagoListDTO> todosLosPagos = new();
+        private PagoRepo pagoRepo;
 
         public ControlPagosListado()
         {
@@ -27,6 +27,13 @@ namespace Club1
             container.Add(this);
 
             InitializeComponent();
+        }
+
+        public void Recargar()
+        {
+            todosLosPagos.Clear();
+            todosLosPagos.AddRange(pagoRepo.obtenerTodos());
+            MostrarPagos(todosLosPagos);
         }
 
         public void AplicarFiltro(object? sender, FiltroChangedEventArgs e)

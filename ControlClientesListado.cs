@@ -12,7 +12,7 @@ namespace Club1
     {
         public event EventHandler<GenerarCarnetClickedEventArgs>? GenerarCarnetClicked;
         public event EventHandler<PagosHistorialRequestedEventArgs>? PagosHistorialRequested;
-        private readonly List<Socio> todosLosSocios;
+        private List<Socio> todosLosSocios = new();
         SocioRepo socioRepo;
         public ControlClientesListado()
         {
@@ -23,6 +23,12 @@ namespace Club1
             MostrarSocios(todosLosSocios);
 
             this.dataGridClientesListadoLista.AutoGenerateColumns = true;
+        }
+
+        public void Recargar()
+        {
+            todosLosSocios = socioRepo.obtenerTodos();
+            MostrarSocios(todosLosSocios);
         }
 
         public void AplicarFiltro(object? sender, FiltroChangedEventArgs e)

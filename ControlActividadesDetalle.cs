@@ -21,35 +21,15 @@ namespace Club1
             }
         }
 
-        public void MostrarDetalle(Actividad actividad)
+        public void MostrarDetalle(Actividad? actividad)
         {
-            //MessageBox.Show("MostrarDetalle: " + (actividad == null ? "null" : actividad.Nombre));
             if (actividad == null)
             {
                 this.Enabled = false;
                 return;
             }
             this.Enabled = true;
-            //this.lblPageClientesListadoDetalleDetalle.Text = $"DNI: {socio.Dni}\nNombre: {socio.Nombre}\nApellido: {socio.Apellido}\nTeléfono: {socio.Telefono}\nNro Carnet: {socio.NroCarnet}\nApto Físico: {(socio.TieneAptoFisico ? "Sí" : "No")}";
-            //this.ControlClienteDetalleLabel1.SetActividad(actividad);
         }
-
-        /*
-        public void mostrarDetalle(Socio socio)
-        {
-            this.btnPageClientesListadoDetalleCobrar.Enabled = true;
-            this.btnPageClientesListadoDetalleEliminar.Enabled = true;
-            this.btnPageClientesListadoDetalleGenerarCarnet.Enabled = true;
-            this.lblPageClientesListadoDetalleSinSeleccion.Visible = false;
-            this.lblPageClientesListadoDetalleDetalle.Visible = true;
-            this.lblPageClientesListadoDetalleDni.Text = socio.Dni;
-            this.lblPageClientesListadoDetalleNombre.Text = socio.Nombre;
-            this.lblPageClientesListadoDetalleApellido.Text = socio.Apellido;
-            this.lblPageClientesListadoDetalleTelefono.Text = socio.Telefono;
-            this.lblPageClientesListadoDetalleNroCarnet.Text = socio.NroCarnet.ToString();
-            this.lblPageClientesListadoDetalleAptoFisico.Text = socio.TieneAptoFisico ? "Sí" : "No";
-        }
-        */
 
         public ControlActividadesDetalle()
         {

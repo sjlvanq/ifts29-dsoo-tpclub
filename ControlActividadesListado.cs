@@ -10,9 +10,10 @@ namespace Club1
 {
     public partial class ControlActividadesListado : UserControl
     {
-        private readonly List<Actividad> todasLasActividades;
+        private List<Actividad> todasLasActividades = new();
 
-        ActividadRepo actividadRepo;
+        private ActividadRepo actividadRepo;
+
         public ControlActividadesListado()
         {
             this.actividadRepo = new ActividadRepo();
@@ -22,6 +23,13 @@ namespace Club1
 
             dataGridActividadesListadoLista.AutoGenerateColumns = true;
             todasLasActividades = actividadRepo.obtenerTodas();
+            MostrarActividades(todasLasActividades);
+        }
+
+        public void Recargar()
+        {
+            todasLasActividades.Clear();
+            todasLasActividades.AddRange(actividadRepo.obtenerTodas());
             MostrarActividades(todasLasActividades);
         }
 

@@ -10,10 +10,10 @@ namespace Club1
 {
     public partial class ControlClientesDetalle : UserControl
     {
-        //public event EventHandler? GenerarCarnetClicked;
+
         public event EventHandler<PagosHistorialRequestedEventArgs>? PagosHistorialRequested;
 
-        //public event EventHandler<PagosHistorialRequestedEventArgs>? PagosHistorialRequested;
+        private Socio? socioActual;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new bool Enabled
@@ -34,35 +34,18 @@ namespace Club1
             }
         }
 
-        public void MostrarDetalle(Socio socio)
+        public void MostrarDetalle(Socio? socio)
         {
-            //MessageBox.Show("MostrarDetalle: " + (socio == null ? "null" : socio.Dni));
             if (socio == null)
             {
+                socioActual = null;
                 this.Enabled = false;
                 return;
             }
+            socioActual = socio;
             this.Enabled = true;
-            //this.lblPageClientesListadoDetalleDetalle.Text = $"DNI: {socio.Dni}\nNombre: {socio.Nombre}\nApellido: {socio.Apellido}\nTeléfono: {socio.Telefono}\nNro Carnet: {socio.NroCarnet}\nApto Físico: {(socio.TieneAptoFisico ? "Sí" : "No")}";
             this.ControlClienteDetalleLabel1.SetSocio(socio);
         }
-
-        /*
-        public void mostrarDetalle(Socio socio)
-        {
-            this.btnPageClientesListadoDetalleCobrar.Enabled = true;
-            this.btnPageClientesListadoDetalleEliminar.Enabled = true;
-            this.btnPageClientesListadoDetalleGenerarCarnet.Enabled = true;
-            this.lblPageClientesListadoDetalleSinSeleccion.Visible = false;
-            this.lblPageClientesListadoDetalleDetalle.Visible = true;
-            this.lblPageClientesListadoDetalleDni.Text = socio.Dni;
-            this.lblPageClientesListadoDetalleNombre.Text = socio.Nombre;
-            this.lblPageClientesListadoDetalleApellido.Text = socio.Apellido;
-            this.lblPageClientesListadoDetalleTelefono.Text = socio.Telefono;
-            this.lblPageClientesListadoDetalleNroCarnet.Text = socio.NroCarnet.ToString();
-            this.lblPageClientesListadoDetalleAptoFisico.Text = socio.TieneAptoFisico ? "Sí" : "No";
-        }
-        */
 
         public ControlClientesDetalle()
         {
