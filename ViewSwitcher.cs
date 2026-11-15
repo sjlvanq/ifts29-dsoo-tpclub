@@ -29,6 +29,7 @@ namespace Club1
         public Panel View1 => panelView1;
         public Panel View2 => panelView2;
         public Button View2Button => btnShowView2;
+        public LinkLabel View1Link => lnkLblBack;
         public ControlFiltros Filtros => controlFiltros;
 
         public void ResetView()

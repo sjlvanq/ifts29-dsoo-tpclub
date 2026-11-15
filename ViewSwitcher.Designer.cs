@@ -93,9 +93,12 @@
             // 
             // lnkLblBack
             // 
+            lnkLblBack.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lnkLblBack.AutoSize = true;
             lnkLblBack.Location = new Point(3, 0);
             lnkLblBack.Name = "lnkLblBack";
-            lnkLblBack.Size = new Size(117, 40);
+            lnkLblBack.Padding = new Padding(15, 0, 15, 0);
+            lnkLblBack.Size = new Size(91, 46);
             lnkLblBack.TabIndex = 0;
             lnkLblBack.TabStop = true;
             lnkLblBack.Text = "Volver";
@@ -120,7 +123,7 @@
             // 
             controlFiltros.AutoSize = true;
             controlFiltros.Dock = DockStyle.Fill;
-            controlFiltros.Location = new Point(126, 3);
+            controlFiltros.Location = new Point(100, 3);
             controlFiltros.Name = "controlFiltros";
             controlFiltros.Size = new Size(617, 40);
             controlFiltros.TabIndex = 1;
