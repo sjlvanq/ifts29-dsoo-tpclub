@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Club1
 {
-    public class PagoListDTO
+    public class PagoListDTO : IControlListadoRecord
     {
         public int IdPago { get; set; }
         public string ClienteNombreCompleto { get; set; } = string.Empty;
         public string ClienteDni { get; set; } = string.Empty;
-        public string? ClienteNroCarnet { get; set; }
+        public string ClienteNroCarnet { get; set; } = string.Empty;
         public bool ClienteHabilitado { get; set; }
         public string? ActividadNombre { get; set; }
         public string MedioPago { get; set; } = string.Empty;

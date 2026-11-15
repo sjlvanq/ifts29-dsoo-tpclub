@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Club1
 {
-    public class Socio
+    public class Socio : IControlListadoRecord
     {
         private int idCliente;
         public int IdCliente { get { return idCliente; } set { idCliente = value; } }
@@ -23,6 +23,12 @@ namespace Club1
         private bool tieneAptoFisico;
         public bool TieneAptoFisico { get { return tieneAptoFisico; } set { tieneAptoFisico = value; } }
         public bool EsSocio { get; set; }
+
+        // Implementación de IControlListadoRecord
+        public string ClienteNombreCompleto => $"{nombre} {apellido}";
+        public bool ClienteHabilitado => EsSocio;
+        public string ClienteNroCarnet => nroCarnet.ToString();
+        public string ClienteDni => dni;
 
         // Constructor para registro
         public Socio(String dni, String nombre, String apellido, String telefono)
