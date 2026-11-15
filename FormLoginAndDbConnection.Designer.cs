@@ -17,7 +17,6 @@ namespace Club1
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLoginAndDbConnection));
             tableLayoutPanel1 = new TableLayoutPanel();
             tabControl1 = new TabControl();
@@ -44,7 +43,6 @@ namespace Club1
             btnConectar = new Button();
             lblHeader = new Label();
             lblErrorMessage = new Label();
-            extenderTextBoxesForValidation1 = new ExtenderTextBoxesForValidation(components);
             tableLayoutPanel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageLogin.SuspendLayout();
@@ -120,9 +118,6 @@ namespace Club1
             // txtLoginUser
             // 
             txtLoginUser.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            extenderTextBoxesForValidation1.SetAssociatedLabel(txtLoginUser, lblLoginUser);
-            extenderTextBoxesForValidation1.SetContainerTab(txtLoginUser, tabPageLogin);
-            extenderTextBoxesForValidation1.SetIsRequired(txtLoginUser, true);
             txtLoginUser.Location = new Point(245, 20);
             txtLoginUser.Name = "txtLoginUser";
             txtLoginUser.Size = new Size(419, 31);
@@ -132,9 +127,6 @@ namespace Club1
             // txtLoginPass
             // 
             txtLoginPass.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            extenderTextBoxesForValidation1.SetAssociatedLabel(txtLoginPass, lblLoginPass);
-            extenderTextBoxesForValidation1.SetContainerTab(txtLoginPass, tabPageLogin);
-            extenderTextBoxesForValidation1.SetIsRequired(txtLoginPass, true);
             txtLoginPass.Location = new Point(245, 61);
             txtLoginPass.Name = "txtLoginPass";
             txtLoginPass.PasswordChar = '*';
@@ -220,9 +212,6 @@ namespace Club1
             // txtDbServer
             // 
             txtDbServer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            extenderTextBoxesForValidation1.SetAssociatedLabel(txtDbServer, lblDbServer);
-            extenderTextBoxesForValidation1.SetContainerTab(txtDbServer, tabPageDB);
-            extenderTextBoxesForValidation1.SetIsRequired(txtDbServer, true);
             txtDbServer.Location = new Point(246, 22);
             txtDbServer.Margin = new Padding(4, 5, 4, 5);
             txtDbServer.Name = "txtDbServer";
@@ -246,9 +235,6 @@ namespace Club1
             // txtDbPort
             // 
             txtDbPort.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            extenderTextBoxesForValidation1.SetAssociatedLabel(txtDbPort, lblDbPort);
-            extenderTextBoxesForValidation1.SetContainerTab(txtDbPort, tabPageDB);
-            extenderTextBoxesForValidation1.SetIsRequired(txtDbPort, true);
             txtDbPort.Location = new Point(246, 63);
             txtDbPort.Margin = new Padding(4, 5, 4, 5);
             txtDbPort.Name = "txtDbPort";
@@ -272,9 +258,6 @@ namespace Club1
             // txtDbDb
             // 
             txtDbDb.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            extenderTextBoxesForValidation1.SetAssociatedLabel(txtDbDb, lblDbDb);
-            extenderTextBoxesForValidation1.SetContainerTab(txtDbDb, tabPageDB);
-            extenderTextBoxesForValidation1.SetIsRequired(txtDbDb, true);
             txtDbDb.Location = new Point(246, 104);
             txtDbDb.Margin = new Padding(4, 5, 4, 5);
             txtDbDb.Name = "txtDbDb";
@@ -298,9 +281,6 @@ namespace Club1
             // txtDbUser
             // 
             txtDbUser.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            extenderTextBoxesForValidation1.SetAssociatedLabel(txtDbUser, lblDbUser);
-            extenderTextBoxesForValidation1.SetContainerTab(txtDbUser, tabPageDB);
-            extenderTextBoxesForValidation1.SetIsRequired(txtDbUser, true);
             txtDbUser.Location = new Point(246, 145);
             txtDbUser.Margin = new Padding(4, 5, 4, 5);
             txtDbUser.Name = "txtDbUser";
@@ -312,9 +292,6 @@ namespace Club1
             // txtDbPass
             // 
             txtDbPass.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            extenderTextBoxesForValidation1.SetAssociatedLabel(txtDbPass, lblDbPass);
-            extenderTextBoxesForValidation1.SetContainerTab(txtDbPass, tabPageDB);
-            extenderTextBoxesForValidation1.SetIsRequired(txtDbPass, true);
             txtDbPass.Location = new Point(246, 186);
             txtDbPass.Margin = new Padding(4, 5, 4, 5);
             txtDbPass.Name = "txtDbPass";
@@ -405,14 +382,6 @@ namespace Club1
             lblErrorMessage.TextChanged += lblErrorMessage_TextChanged;
             lblErrorMessage.Resize += lblErrorMessage_Resize;
             // 
-            // extenderTextBoxesForValidation1
-            // 
-            extenderTextBoxesForValidation1.BorderStyle = BorderStyle.None;
-            extenderTextBoxesForValidation1.Location = new Point(-6, 440);
-            extenderTextBoxesForValidation1.Name = "extenderTextBoxesForValidation1";
-            extenderTextBoxesForValidation1.Size = new Size(150, 24);
-            extenderTextBoxesForValidation1.TabIndex = 1;
-            // 
             // FormLoginAndDbConnection
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -421,7 +390,6 @@ namespace Club1
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.White;
             ClientSize = new Size(701, 471);
-            Controls.Add(extenderTextBoxesForValidation1);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");

@@ -16,15 +16,52 @@ namespace Club1
         public FormLoginAndDbConnection()
         {
             InitializeComponent();
+
+            if (extenderTextBoxesForValidation1 is null)
+            {
+                extenderTextBoxesForValidation1 = new ExtenderTextBoxesForValidation();
+            }
+
+            RegistrarCamposRequeridos();
+            Icon = (Icon)Properties.Resources.club_icon;
             btnConectar.DialogResult = DialogResult.None;
             AutoSize = false;
             originalClientHeight = ClientSize.Height;
             isInitialized = true;
         }
 
+        private void RegistrarCamposRequeridos()
+        {
+            RegistrarCampoRequerido(txtLoginUser, lblLoginUser, tabPageLogin);
+            RegistrarCampoRequerido(txtLoginPass, lblLoginPass, tabPageLogin);
+            RegistrarCampoRequerido(txtDbServer, lblDbServer, tabPageDB);
+            RegistrarCampoRequerido(txtDbPort, lblDbPort, tabPageDB);
+            RegistrarCampoRequerido(txtDbDb, lblDbDb, tabPageDB);
+            RegistrarCampoRequerido(txtDbUser, lblDbUser, tabPageDB);
+            RegistrarCampoRequerido(txtDbPass, lblDbPass, tabPageDB);
+        }
+
+        private void RegistrarCampoRequerido(TextBox textBox, Label label, TabPage tabPage)
+        {
+            if (textBox is null || label is null || tabPage is null)
+            {
+                return;
+            }
+
+            extenderTextBoxesForValidation1.SetAssociatedLabel(textBox, label);
+            extenderTextBoxesForValidation1.SetContainerTab(textBox, tabPage);
+            extenderTextBoxesForValidation1.SetIsRequired(textBox, true);
+        }
+
         private void btnConectar_Click(object sender, EventArgs e)
         {
             // Validación: Sin campos vacíos
+            if (extenderTextBoxesForValidation1 is null)
+            {
+                lblErrorMessage.Text = "No se pudo inicializar la validación del formulario.";
+                return;
+            }
+
             if (!extenderTextBoxesForValidation1.ValidateAll(out Control? invalidControl))
             {
                 Label? label = invalidControl is null
