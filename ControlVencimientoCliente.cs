@@ -13,6 +13,13 @@ namespace Club1
             btnBuscarCliente.Click += btnBuscarCliente_Click;
         }
 
+        public void ConsultarPorDni(string dni)
+        {
+            cmbCriterioBusqueda.SelectedIndex = 1;
+            txtValorBusqueda.Text = dni;
+            btnBuscarCliente_Click(btnBuscarCliente, EventArgs.Empty);
+        }
+
         private void btnBuscarCliente_Click(object? sender, EventArgs e)
         {
             LimpiarVencimiento();
