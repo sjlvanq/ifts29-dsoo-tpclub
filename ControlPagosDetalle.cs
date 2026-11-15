@@ -33,7 +33,6 @@ namespace Club1
 
         public void MostrarDetalle(PagoListDTO? pago)
         {
-            //MessageBox.Show("MostrarDetalle: " + (pago == null ? "null" : pago.Dni));
             if (pago == null)
             {
                 pagoActual = null;
@@ -43,6 +42,7 @@ namespace Club1
             this.Enabled = true;
             pagoActual = pago;
             //this.lblPagePagosListadoDetalleDetalle.Text = $"DNI: {pago.Dni}\nNombre: {pago.Nombre}\nApellido: {pago.Apellido}\nTeléfono: {pago.Telefono}\nNro Carnet: {pago.NroCarnet}\nApto Físico: {(pago.TieneAptoFisico ? "Sí" : "No")}";
+            this.btnPagePagosListadoDetalleConsultarProximoVencimiento.Enabled = pago.ClienteEsSocio;
             this.controlPagoDetalleInfo1.SetPago(pago);
         }
 
