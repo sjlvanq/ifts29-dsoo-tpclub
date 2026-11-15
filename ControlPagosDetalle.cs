@@ -27,7 +27,7 @@ namespace Club1
                 this.btnPagePagosListadoDetalleConsultarProximoVencimiento.Enabled = value;
 
                 if (!value)
-                    this.controlPagoDetalleInfo.Clear();
+                    this.controlPagoDetalleInfo1.Clear();
             }
         }
 
@@ -43,7 +43,7 @@ namespace Club1
             this.Enabled = true;
             pagoActual = pago;
             //this.lblPagePagosListadoDetalleDetalle.Text = $"DNI: {pago.Dni}\nNombre: {pago.Nombre}\nApellido: {pago.Apellido}\nTeléfono: {pago.Telefono}\nNro Carnet: {pago.NroCarnet}\nApto Físico: {(pago.TieneAptoFisico ? "Sí" : "No")}";
-            this.controlPagoDetalleInfo.SetPago(pago);
+            this.controlPagoDetalleInfo1.SetPago(pago);
         }
 
         public ControlPagosDetalle()
