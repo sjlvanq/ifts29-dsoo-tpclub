@@ -236,7 +236,7 @@
             // 
             picPanelPageHomeLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             picPanelPageHomeLogo.BackColor = Color.Transparent;
-            picPanelPageHomeLogo.Image = Properties.Resources.logo_alpha;
+            picPanelPageHomeLogo.Image = (Image)Properties.Resources.escudo;
             picPanelPageHomeLogo.Location = new Point(3, 15);
             picPanelPageHomeLogo.Margin = new Padding(3, 15, 3, 3);
             picPanelPageHomeLogo.Name = "picPanelPageHomeLogo";

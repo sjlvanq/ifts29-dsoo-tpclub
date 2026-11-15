@@ -61,11 +61,31 @@ namespace Club1.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon club_icon {
+            get {
+                object obj = ResourceManager.GetObject("club_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo_alpha {
+        internal static System.Drawing.Bitmap es_socio {
             get {
-                object obj = ResourceManager.GetObject("logo-alpha", resourceCulture);
+                object obj = ResourceManager.GetObject("es_socio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap escudo {
+            get {
+                object obj = ResourceManager.GetObject("escudo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -23,6 +23,7 @@ namespace Club1
         {
             this.club = club ?? throw new ArgumentNullException(nameof(club));
             this.usuarioId = usuarioId;
+            this.Icon = (Icon)Properties.Resources.club_icon;
             InitializeComponent();
 
             if (viewSwitcherVencimientos == null)
