@@ -7,7 +7,7 @@ namespace Club1
         {
             ApplicationConfiguration.Initialize();
             using FormLoginAndDbConnection login = new FormLoginAndDbConnection();
-            if (login.ShowDialog() != DialogResult.OK)
+            if (login.ShowDialog() != DialogResult.OK || login.UsuarioAutenticadoId <= 0)
             {
                 return;
             }

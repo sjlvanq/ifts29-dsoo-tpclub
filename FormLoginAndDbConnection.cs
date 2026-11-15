@@ -16,6 +16,7 @@ namespace Club1
         public FormLoginAndDbConnection()
         {
             InitializeComponent();
+            btnConectar.DialogResult = DialogResult.None;
             AutoSize = false;
             originalClientHeight = ClientSize.Height;
             isInitialized = true;

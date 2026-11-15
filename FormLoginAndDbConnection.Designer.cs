@@ -354,6 +354,7 @@ namespace Club1
             // 
             // btnCancelar
             // 
+            btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Dock = DockStyle.Fill;
             btnCancelar.Location = new Point(3, 3);
             btnCancelar.MinimumSize = new Size(0, 60);
@@ -365,6 +366,7 @@ namespace Club1
             // 
             // btnConectar
             // 
+            btnConectar.DialogResult = DialogResult.OK;
             btnConectar.Dock = DockStyle.Fill;
             btnConectar.Location = new Point(350, 3);
             btnConectar.MinimumSize = new Size(0, 60);
