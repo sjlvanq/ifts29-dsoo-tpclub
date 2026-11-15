@@ -10,7 +10,6 @@ namespace Club1
     {
         private List<Vencimiento> vencimientos = new();
         private readonly VencimientoRepo vencimientoRepo;
-
         private readonly String encabezadoMsg = $"Vencimientos Hoy ({DateTime.Today:dd/MM/yyyy})";
         public ControlVencimientosListado()
         {
