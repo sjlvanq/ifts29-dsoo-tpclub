@@ -7,6 +7,8 @@ namespace Club1
 
         private String clienteNroCarnet;
         public String ClienteNroCarnet { get { return clienteNroCarnet; } set { clienteNroCarnet = value; } }
+        private String clienteDni;
+        public String ClienteDni { get { return clienteDni; } set { clienteDni = value; } }
         private String clienteNombreCompleto;
         public String ClienteNombreCompleto { get { return clienteNombreCompleto; } set { clienteNombreCompleto = value; } }
         private String clienteTelefono;
@@ -25,9 +27,10 @@ namespace Club1
         public decimal? CuotaImporteSiguiente { get { return cuotaImporteSiguiente; } set { cuotaImporteSiguiente = value; } }
 
         // Implementación de IControlListadoRecord
-        public bool ClienteHabilitado => true;
-        public string ClienteDni => string.Empty;
 
+        public bool ClienteEsSocio => true;
+        public bool ClienteHabilitado => true;
+        
         public Vencimiento(
             String clienteNroCarnet,
             String clienteNombreCompleto,
@@ -37,9 +40,11 @@ namespace Club1
             int cuotaTotalCuotas,
             DateTime cuotaFechaVencimiento,
             bool tieneCuotaSiguiente,
-            decimal? cuotaImporteSiguiente)
+            decimal? cuotaImporteSiguiente,
+            String clienteDni = "")
         {
             this.clienteNroCarnet = clienteNroCarnet;
+            this.clienteDni = clienteDni;
             this.clienteNombreCompleto = clienteNombreCompleto;
             this.clienteTelefono = clienteTelefono;
             this.planNombre = planNombre;
