@@ -25,12 +25,12 @@ namespace Club1
                     return;
 
                 field = value;
-                this.btnPageClientesListadoDetalleGenerarCarnet.Enabled = value;
-                this.btnPageClientesListadoDetalleEliminar.Enabled = value;
-                this.btnPageClientesListadoDetalleConsultarPagos.Enabled = value;
+                btnPageClientesListadoDetalleGenerarCarnet.Enabled = value;
+                btnPageClientesListadoDetalleEliminar.Enabled = value;
+                btnPageClientesListadoDetalleConsultarPagos.Enabled = value;
 
                 if (!value)
-                    this.ControlClienteDetalleLabel1.Clear();
+                    controlClienteDetalleInfo1.Clear();
             }
         }
 
@@ -44,7 +44,7 @@ namespace Club1
             }
             socioActual = socio;
             this.Enabled = true;
-            this.ControlClienteDetalleLabel1.SetSocio(socio);
+            controlClienteDetalleInfo1.SetSocio(socio);
         }
 
         public ControlClientesDetalle()

@@ -33,19 +33,18 @@
             btnPagePagosListadoDetalleEliminar = new Button();
             btnPagePagosListadoDetalleConsultarProximoVencimiento = new Button();
             btnPagePagosListadoDetalleGenerarComprobante = new Button();
-            controlPagoDetalleInfo = new ControlPagoDetalleInfo();
+            controlPagoDetalleInfo1 = new ControlPagoDetalleInfo();
             panelPagePagosListadoDetalle.SuspendLayout();
             panelPagePagosListadoDetalleAcciones.SuspendLayout();
             SuspendLayout();
             // 
             // panelPagePagosListadoDetalle
             // 
-            panelPagePagosListadoDetalle.AutoSize = false;
             panelPagePagosListadoDetalle.ColumnCount = 2;
             panelPagePagosListadoDetalle.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             panelPagePagosListadoDetalle.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             panelPagePagosListadoDetalle.Controls.Add(panelPagePagosListadoDetalleAcciones, 1, 0);
-            panelPagePagosListadoDetalle.Controls.Add(controlPagoDetalleInfo, 0, 0);
+            panelPagePagosListadoDetalle.Controls.Add(controlPagoDetalleInfo1, 0, 0);
             panelPagePagosListadoDetalle.Dock = DockStyle.Fill;
             panelPagePagosListadoDetalle.Location = new Point(0, 0);
             panelPagePagosListadoDetalle.Name = "panelPagePagosListadoDetalle";
@@ -65,8 +64,6 @@
             // 
             // panelPagePagosListadoDetalleAcciones
             // 
-            panelPagePagosListadoDetalleAcciones.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panelPagePagosListadoDetalleAcciones.AutoSize = false;
             panelPagePagosListadoDetalleAcciones.ColumnCount = 1;
             panelPagePagosListadoDetalleAcciones.ColumnStyles.Add(new ColumnStyle());
             panelPagePagosListadoDetalleAcciones.Controls.Add(btnPagePagosListadoDetalleEliminar, 0, 2);
@@ -85,10 +82,9 @@
             // btnPagePagosListadoDetalleEliminar
             // 
             btnPagePagosListadoDetalleEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnPagePagosListadoDetalleEliminar.AutoSize = false;
-            btnPagePagosListadoDetalleEliminar.Location = new Point(3, 330);
+            btnPagePagosListadoDetalleEliminar.Location = new Point(3, 281);
             btnPagePagosListadoDetalleEliminar.Name = "btnPagePagosListadoDetalleEliminar";
-            btnPagePagosListadoDetalleEliminar.Size = new Size(304, 35);
+            btnPagePagosListadoDetalleEliminar.Size = new Size(304, 134);
             btnPagePagosListadoDetalleEliminar.TabIndex = 2;
             btnPagePagosListadoDetalleEliminar.Text = "Eliminar";
             btnPagePagosListadoDetalleEliminar.UseVisualStyleBackColor = true;
@@ -96,10 +92,9 @@
             // btnPagePagosListadoDetalleConsultarProximoVencimiento
             // 
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnPagePagosListadoDetalleConsultarProximoVencimiento.AutoSize = false;
-            btnPagePagosListadoDetalleConsultarProximoVencimiento.Location = new Point(3, 191);
+            btnPagePagosListadoDetalleConsultarProximoVencimiento.Location = new Point(3, 142);
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Name = "btnPagePagosListadoDetalleConsultarProximoVencimiento";
-            btnPagePagosListadoDetalleConsultarProximoVencimiento.Size = new Size(304, 35);
+            btnPagePagosListadoDetalleConsultarProximoVencimiento.Size = new Size(304, 133);
             btnPagePagosListadoDetalleConsultarProximoVencimiento.TabIndex = 1;
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Text = "Consultar Próximo Vencimientos";
             btnPagePagosListadoDetalleConsultarProximoVencimiento.UseVisualStyleBackColor = true;
@@ -107,24 +102,20 @@
             // btnPagePagosListadoDetalleGenerarComprobante
             // 
             btnPagePagosListadoDetalleGenerarComprobante.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnPagePagosListadoDetalleGenerarComprobante.AutoSize = false;
-            btnPagePagosListadoDetalleGenerarComprobante.Location = new Point(3, 52);
+            btnPagePagosListadoDetalleGenerarComprobante.Location = new Point(3, 3);
             btnPagePagosListadoDetalleGenerarComprobante.Name = "btnPagePagosListadoDetalleGenerarComprobante";
-            btnPagePagosListadoDetalleGenerarComprobante.Size = new Size(304, 35);
+            btnPagePagosListadoDetalleGenerarComprobante.Size = new Size(304, 133);
             btnPagePagosListadoDetalleGenerarComprobante.TabIndex = 0;
             btnPagePagosListadoDetalleGenerarComprobante.Text = "Generar Comprobante";
             btnPagePagosListadoDetalleGenerarComprobante.UseVisualStyleBackColor = true;
             // 
-            // controlPagoDetalleInfo
+            // controlPagoDetalleInfo1
             // 
-            controlPagoDetalleInfo.AutoSize = false;
-            controlPagoDetalleInfo.BackColor = Color.Gray;
-            controlPagoDetalleInfo.Dock = DockStyle.Fill;
-            controlPagoDetalleInfo.Location = new Point(3, 0);
-            controlPagoDetalleInfo.Name = "controlPagoDetalleInfo";
-            controlPagoDetalleInfo.Size = new Size(310, 424);
-            controlPagoDetalleInfo.TabIndex = 1;
-            controlPagoDetalleInfo.Text = "Seleccione un pago\r\npara habilitar los botones\r\nde acción.\r\n";
+            controlPagoDetalleInfo1.Dock = DockStyle.Fill;
+            controlPagoDetalleInfo1.Location = new Point(3, 3);
+            controlPagoDetalleInfo1.Name = "controlPagoDetalleInfo1";
+            controlPagoDetalleInfo1.Size = new Size(310, 418);
+            controlPagoDetalleInfo1.TabIndex = 1;
             // 
             // ControlPagosDetalle
             // 
@@ -134,11 +125,8 @@
             Name = "ControlPagosDetalle";
             Size = new Size(632, 424);
             panelPagePagosListadoDetalle.ResumeLayout(false);
-            panelPagePagosListadoDetalle.PerformLayout();
             panelPagePagosListadoDetalleAcciones.ResumeLayout(false);
-            panelPagePagosListadoDetalleAcciones.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -148,6 +136,6 @@
         private Button btnPagePagosListadoDetalleGenerarComprobante;
         private Button btnPagePagosListadoDetalleConsultarProximoVencimiento;
         private Button btnPagePagosListadoDetalleEliminar;
-        private ControlPagoDetalleInfo controlPagoDetalleInfo;
+        private ControlPagoDetalleInfo controlPagoDetalleInfo1;
     }
 }

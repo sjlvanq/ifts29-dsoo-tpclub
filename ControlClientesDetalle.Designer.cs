@@ -33,19 +33,18 @@
             btnPageClientesListadoDetalleEliminar = new Button();
             btnPageClientesListadoDetalleConsultarPagos = new Button();
             btnPageClientesListadoDetalleGenerarCarnet = new Button();
-            ControlClienteDetalleLabel1 = new ControlClienteDetalleLabel();
+            controlClienteDetalleInfo1 = new ControlClienteDetalleInfo();
             panelPageClientesListadoDetalle.SuspendLayout();
             panelPageClientesListadoDetalleAcciones.SuspendLayout();
             SuspendLayout();
             // 
             // panelPageClientesListadoDetalle
             // 
-            panelPageClientesListadoDetalle.AutoSize = false;
             panelPageClientesListadoDetalle.ColumnCount = 2;
             panelPageClientesListadoDetalle.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             panelPageClientesListadoDetalle.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             panelPageClientesListadoDetalle.Controls.Add(panelPageClientesListadoDetalleAcciones, 1, 0);
-            panelPageClientesListadoDetalle.Controls.Add(ControlClienteDetalleLabel1, 0, 0);
+            panelPageClientesListadoDetalle.Controls.Add(controlClienteDetalleInfo1, 0, 0);
             panelPageClientesListadoDetalle.Dock = DockStyle.Fill;
             panelPageClientesListadoDetalle.Location = new Point(0, 0);
             panelPageClientesListadoDetalle.Name = "panelPageClientesListadoDetalle";
@@ -65,8 +64,6 @@
             // 
             // panelPageClientesListadoDetalleAcciones
             // 
-            panelPageClientesListadoDetalleAcciones.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panelPageClientesListadoDetalleAcciones.AutoSize = false;
             panelPageClientesListadoDetalleAcciones.ColumnCount = 1;
             panelPageClientesListadoDetalleAcciones.ColumnStyles.Add(new ColumnStyle());
             panelPageClientesListadoDetalleAcciones.Controls.Add(btnPageClientesListadoDetalleEliminar, 0, 2);
@@ -85,10 +82,9 @@
             // btnPageClientesListadoDetalleEliminar
             // 
             btnPageClientesListadoDetalleEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnPageClientesListadoDetalleEliminar.AutoSize = false;
-            btnPageClientesListadoDetalleEliminar.Location = new Point(3, 330);
+            btnPageClientesListadoDetalleEliminar.Location = new Point(3, 281);
             btnPageClientesListadoDetalleEliminar.Name = "btnPageClientesListadoDetalleEliminar";
-            btnPageClientesListadoDetalleEliminar.Size = new Size(304, 35);
+            btnPageClientesListadoDetalleEliminar.Size = new Size(304, 134);
             btnPageClientesListadoDetalleEliminar.TabIndex = 2;
             btnPageClientesListadoDetalleEliminar.Text = "Eliminar";
             btnPageClientesListadoDetalleEliminar.UseVisualStyleBackColor = true;
@@ -96,10 +92,9 @@
             // btnPageClientesListadoDetalleConsultarPagos
             // 
             btnPageClientesListadoDetalleConsultarPagos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnPageClientesListadoDetalleConsultarPagos.AutoSize = false;
-            btnPageClientesListadoDetalleConsultarPagos.Location = new Point(3, 191);
+            btnPageClientesListadoDetalleConsultarPagos.Location = new Point(3, 142);
             btnPageClientesListadoDetalleConsultarPagos.Name = "btnPageClientesListadoDetalleConsultarPagos";
-            btnPageClientesListadoDetalleConsultarPagos.Size = new Size(304, 35);
+            btnPageClientesListadoDetalleConsultarPagos.Size = new Size(304, 133);
             btnPageClientesListadoDetalleConsultarPagos.TabIndex = 1;
             btnPageClientesListadoDetalleConsultarPagos.Text = "Consultar Pagos";
             btnPageClientesListadoDetalleConsultarPagos.UseVisualStyleBackColor = true;
@@ -108,24 +103,20 @@
             // btnPageClientesListadoDetalleGenerarCarnet
             // 
             btnPageClientesListadoDetalleGenerarCarnet.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnPageClientesListadoDetalleGenerarCarnet.AutoSize = false;
-            btnPageClientesListadoDetalleGenerarCarnet.Location = new Point(3, 52);
+            btnPageClientesListadoDetalleGenerarCarnet.Location = new Point(3, 3);
             btnPageClientesListadoDetalleGenerarCarnet.Name = "btnPageClientesListadoDetalleGenerarCarnet";
-            btnPageClientesListadoDetalleGenerarCarnet.Size = new Size(304, 35);
+            btnPageClientesListadoDetalleGenerarCarnet.Size = new Size(304, 133);
             btnPageClientesListadoDetalleGenerarCarnet.TabIndex = 0;
             btnPageClientesListadoDetalleGenerarCarnet.Text = "Generar Carnet";
             btnPageClientesListadoDetalleGenerarCarnet.UseVisualStyleBackColor = true;
             // 
-            // ControlClienteDetalleLabel1
+            // controlClienteDetalleInfo1
             // 
-            ControlClienteDetalleLabel1.AutoSize = false;
-            ControlClienteDetalleLabel1.BackColor = Color.Gray;
-            ControlClienteDetalleLabel1.Dock = DockStyle.Fill;
-            ControlClienteDetalleLabel1.Location = new Point(3, 0);
-            ControlClienteDetalleLabel1.Name = "ControlClienteDetalleLabel1";
-            ControlClienteDetalleLabel1.Size = new Size(310, 424);
-            ControlClienteDetalleLabel1.TabIndex = 1;
-            ControlClienteDetalleLabel1.Text = "Seleccione un cliente\r\npara habilitar los botones\r\nde acción.\r\n";
+            controlClienteDetalleInfo1.Dock = DockStyle.Fill;
+            controlClienteDetalleInfo1.Location = new Point(3, 3);
+            controlClienteDetalleInfo1.Name = "controlClienteDetalleInfo1";
+            controlClienteDetalleInfo1.Size = new Size(310, 418);
+            controlClienteDetalleInfo1.TabIndex = 1;
             // 
             // ControlClientesDetalle
             // 
@@ -135,11 +126,8 @@
             Name = "ControlClientesDetalle";
             Size = new Size(632, 424);
             panelPageClientesListadoDetalle.ResumeLayout(false);
-            panelPageClientesListadoDetalle.PerformLayout();
             panelPageClientesListadoDetalleAcciones.ResumeLayout(false);
-            panelPageClientesListadoDetalleAcciones.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -149,6 +137,6 @@
         private Button btnPageClientesListadoDetalleGenerarCarnet;
         private Button btnPageClientesListadoDetalleConsultarPagos;
         private Button btnPageClientesListadoDetalleEliminar;
-        private ControlClienteDetalleLabel ControlClienteDetalleLabel1;
+        private ControlClienteDetalleInfo controlClienteDetalleInfo1;
     }
 }

@@ -16,6 +16,9 @@
     <Compile Update="ControlDetalleInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="ControlClienteDetalleInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="IControlDetalleInfo.cs" />
     <Compile Update="FormLoginAndDbConnection.cs">
       <SubType>Form</SubType>
