@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Club1
 {
-    public partial class ControlClienteDetalleLabel : Label
+    public partial class ControlClienteDetalleLabel : Label, IControlDetalleInfo
     {
         private string sinSeleccionMsg = "Seleccione un cliente\r\npara habilitar los botones\r\nde acción.\r\n";
         private Color sinSeleccionColor = Color.Gray;
@@ -18,17 +18,29 @@ namespace Club1
             InitializeComponent();
             this.Text = this.sinSeleccionMsg;
             this.BackColor = this.sinSeleccionColor;
-            
+
         }
-        public void SetSocio(Socio socio)
+        public void SetRecord(IControlListadoRecord record)
         {
-            if (socio == null)
+            if (record == null)
             {
                 this.Clear();
                 return;
             }
-            this.Text = $"DNI: {socio.Dni}\nNombre: {socio.Nombre}\nApellido: {socio.Apellido}\nTeléfono: {socio.Telefono}\nNro Carnet: {socio.NroCarnet}\nApto Físico: {(socio.TieneAptoFisico ? "Sí" : "No")}";
+            var socio = record as Socio;
+            if (socio != null)
+            {
+                this.Text = $"DNI: {socio.Dni}\nNombre: {socio.Nombre}\nApellido: {socio.Apellido}\nTeléfono: {socio.Telefono}\nNro Carnet: {socio.NroCarnet}\nApto Físico: {(socio.TieneAptoFisico ? "Sí" : "No")}";
+            }
+            else
+            {
+                this.Text = $"Nombre: {record.ClienteNombreCompleto}\nNro Carnet: {record.ClienteNroCarnet}\nDNI: {record.ClienteDni}";
+            }
             this.BackColor = this.conSeleccionColor;
+        }
+        public void SetSocio(Socio socio)
+        {
+            SetRecord(socio);
         }
         public void Clear()
         {

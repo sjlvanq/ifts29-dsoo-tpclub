@@ -62,7 +62,6 @@
             panelPagePagosListadoDetalle.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             panelPagePagosListadoDetalle.Size = new Size(632, 424);
             panelPagePagosListadoDetalle.TabIndex = 0;
-            panelPagePagosListadoDetalle.Paint += tableLayoutPanel1_Paint;
             // 
             // panelPagePagosListadoDetalleAcciones
             // 
@@ -115,7 +114,6 @@
             btnPagePagosListadoDetalleGenerarComprobante.TabIndex = 0;
             btnPagePagosListadoDetalleGenerarComprobante.Text = "Generar Comprobante";
             btnPagePagosListadoDetalleGenerarComprobante.UseVisualStyleBackColor = true;
-            btnPagePagosListadoDetalleGenerarComprobante.Click += btnPagePagosListadoDetalleGenerarCarnet_Click;
             // 
             // controlPagoDetalleInfo
             // 

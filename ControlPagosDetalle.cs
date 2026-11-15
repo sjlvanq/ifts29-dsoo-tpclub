@@ -51,20 +51,5 @@ namespace Club1
             InitializeComponent();
             this.Enabled = false;
         }
-
-        private void lblPagePagosListadoDetalleSinSeleccion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnPagePagosListadoDetalleGenerarCarnet_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
