@@ -16,9 +16,14 @@ namespace Club1
         private Color conSeleccionColorLblNombre = Color.FromKnownColor(KnownColor.ControlLightLight);
         private Color conSeleccionColorLblHabilitado = Color.LightGreen;
         private Color conSeleccionColorLblInhabilitado = Color.Orange;
+        private static readonly Image? imgCarnet = Properties.Resources.es_socio;
+
         public ControlPagoDetalleInfo()
         {
             InitializeComponent();
+
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(ControlPagoDetalleInfo));
+            lblControlPagoDetalleInfoNombre.ImageAlign = ContentAlignment.TopRight;
             Clear();
 
         }
@@ -40,6 +45,17 @@ namespace Club1
             lblControlPagoDetalleInfoIds.BackColor = this.conSeleccionColorLbl;
             lblControlPagoDetalleInfoNombre.Visible = true;
             lblControlPagoDetalleInfoHabilitado.Visible = true;
+
+            if (record is PagoListDTO pago)
+            {
+                var clienteEsSocio = pago.ClienteEsSocio;
+                lblControlPagoDetalleInfoNombre.Image = clienteEsSocio ? imgCarnet : null;
+            }
+            else
+            {
+                // Defensivo por si se pasa un registro que no es Socio, aunque debería serlo
+                lblControlPagoDetalleInfoNombre.Image = null;
+            }
         }
         public void SetPago(PagoListDTO pago)
         {
