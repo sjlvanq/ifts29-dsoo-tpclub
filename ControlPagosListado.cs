@@ -8,6 +8,7 @@ namespace Club1
 {
     public partial class ControlPagosListado : UserControl
     {
+        public event EventHandler<ProximoVencimientoRequestedEventArgrs>? ProximoVencimientoRequested;
         private List<PagoListDTO> todosLosPagos = new();
         private readonly PagoRepo pagoRepo = new();
 
@@ -92,6 +93,13 @@ namespace Club1
                 return;
             }
             this.controlPagoDetalle.MostrarDetalle(dataGridPagosListadoLista.SelectedRows[0].DataBoundItem as PagoListDTO);
+        }
+
+        private void controlPagoDetalle_ProximoVencimientoRequested(
+            object? sender,
+            ProximoVencimientoRequestedEventArgrs e)
+        {
+            ProximoVencimientoRequested?.Invoke(this, e);
         }
 
     }

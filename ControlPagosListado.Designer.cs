@@ -82,6 +82,7 @@
             controlPagoDetalle.Name = "controlPagoDetalle";
             controlPagoDetalle.Size = new Size(757, 154);
             controlPagoDetalle.TabIndex = 2;
+            controlPagoDetalle.ProximoVencimientoRequested += controlPagoDetalle_ProximoVencimientoRequested;
             // 
             // ControlPagosListado
             // 
