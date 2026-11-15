@@ -109,6 +109,7 @@
             btnPageClientesListadoDetalleGenerarCarnet.TabIndex = 0;
             btnPageClientesListadoDetalleGenerarCarnet.Text = "Generar Carnet";
             btnPageClientesListadoDetalleGenerarCarnet.UseVisualStyleBackColor = true;
+            btnPageClientesListadoDetalleGenerarCarnet.Click += btnPageClientesListadoDetalleGenerarCarnet_Click;
             // 
             // controlClienteDetalleInfo1
             // 
