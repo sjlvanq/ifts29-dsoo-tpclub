@@ -41,13 +41,18 @@ namespace Club1
             controlFiltros.Visible = _showFiltersOnDefaultView;
         }
 
-        private void btnShowView2_Click(object? sender, EventArgs e)
+        public void ShowView2()
         {
             panelView1.Visible = false;
             panelView2.Visible = true;
             btnShowView2.Visible = false;
             lnkLblBack.Visible = true;
             controlFiltros.Visible = false;
+        }
+
+        private void btnShowView2_Click(object? sender, EventArgs e)
+        {
+            ShowView2();
         }
 
         private void lnkLblBack_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
