@@ -11,6 +11,8 @@ namespace Club1
         public string ClienteDni { get; set; } = string.Empty;
         public string ClienteNroCarnet { get; set; } = string.Empty;
         public bool ClienteHabilitado { get; set; }
+        public bool ClienteEsSocio { get; set; }
+        public bool PagoEsCuota { get; set; }
         public string? ActividadNombre { get; set; }
         public string MedioPago { get; set; } = string.Empty;
         public DateTime FechaPago { get; set; }
@@ -21,7 +23,8 @@ namespace Club1
             IdPago = pago.IdPago;
             ClienteNombreCompleto = clienteNombreCompleto ?? string.Empty;
             ClienteDni = clienteDni ?? string.Empty;
-            ClienteNroCarnet = clienteNroCarnet;
+            ClienteNroCarnet = clienteNroCarnet ?? string.Empty;
+            PagoEsCuota = pago.EsCuota;
             ActividadNombre = actividadNombre;
             MedioPago = pago.MedioPago;
             FechaPago = pago.FechaPago;
