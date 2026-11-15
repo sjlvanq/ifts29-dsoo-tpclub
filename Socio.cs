@@ -26,7 +26,7 @@ namespace Club1
 
         // Implementación de IControlListadoRecord
         public string ClienteNombreCompleto => $"{nombre} {apellido}";
-        public bool ClienteHabilitado => EsSocio;
+        public bool ClienteHabilitado => TieneAptoFisico;
         public string ClienteNroCarnet => nroCarnet.ToString();
         public string ClienteDni => dni;
 
