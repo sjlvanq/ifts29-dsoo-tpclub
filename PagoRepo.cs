@@ -58,6 +58,7 @@ namespace Club1
                         c.dni AS cliente_dni,
                         c.nro_carnet AS cliente_nro_carnet,
                         (SELECT 1 FROM vw_socio_habilitado WHERE id_cliente = p.id_cliente) as cliente_habilitado,
+                        c.es_socio AS cliente_es_socio,
                         a.nombre AS actividad_nombre,
                         p.medio_pago AS  medio_pago,
                         p.fecha_pago AS fecha_pago,
@@ -105,6 +106,7 @@ namespace Club1
                             ClienteDni = reader["cliente_dni"]?.ToString() ?? string.Empty,
                             ClienteNroCarnet = reader["cliente_nro_carnet"]?.ToString() ?? string.Empty,
                             ClienteHabilitado = reader["cliente_habilitado"] != DBNull.Value && Convert.ToInt32(reader["cliente_habilitado"]) == 1,
+                            ClienteEsSocio = reader["cliente_es_socio"] != DBNull.Value && Convert.ToInt32(reader["cliente_es_socio"]) == 1,
                             ActividadNombre = reader["actividad_nombre"]?.ToString() ?? string.Empty
                         };
                         pagos.Add(pagoDTO);
