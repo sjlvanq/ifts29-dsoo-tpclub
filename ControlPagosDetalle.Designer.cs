@@ -98,6 +98,7 @@
             btnPagePagosListadoDetalleConsultarProximoVencimiento.TabIndex = 1;
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Text = "Consultar Próximo Vencimientos";
             btnPagePagosListadoDetalleConsultarProximoVencimiento.UseVisualStyleBackColor = true;
+            btnPagePagosListadoDetalleConsultarProximoVencimiento.Click += btnPagePagosListadoDetalleConsultarProximoVencimiento_Click;
             // 
             // btnPagePagosListadoDetalleGenerarComprobante
             // 

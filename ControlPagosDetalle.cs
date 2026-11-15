@@ -10,6 +10,8 @@ namespace Club1
 {
     public partial class ControlPagosDetalle : UserControl
     {
+        public event EventHandler<ProximoVencimientoRequestedEventArgrs>? ProximoVencimientoRequested;
+
         private PagoListDTO? pagoActual;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -59,6 +61,16 @@ namespace Club1
 
             FormComprobantePago formComprobantePago = new FormComprobantePago(pagoActual);
             formComprobantePago.ShowDialog();
+        }
+
+        private void btnPagePagosListadoDetalleConsultarProximoVencimiento_Click(object sender, EventArgs e)
+        {
+            if (pagoActual == null)
+                return;
+
+            ProximoVencimientoRequested?.Invoke(
+                this,
+                new ProximoVencimientoRequestedEventArgrs(pagoActual.ClienteDni));
         }
     }
 }
