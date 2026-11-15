@@ -46,7 +46,7 @@ namespace Club1
             }
             socioActual = socio;
             this.Enabled = true;
-            this.btnPageClientesListadoDetalleGenerarCarnet.Enabled = socio.EsSocio;
+            this.btnPageClientesListadoDetalleGenerarCarnet.Enabled = socio.ClienteEsSocio;
             controlClienteDetalleInfo1.SetSocio(socio);
         }
 
@@ -76,7 +76,7 @@ namespace Club1
         private void btnPageClientesListadoDetalleGenerarCarnet_Click(object sender, EventArgs e)
         {
             if (socioActual == null) { return; } // ¿Lanzar excepción? ¿Mostrar mensaje de error? ¿Ignorar?
-            if (!socioActual.EsSocio) { return; }
+            if (!socioActual.ClienteEsSocio) { return; }
             
             using FormCarnet carnetForm = new FormCarnet(socioActual);
             carnetForm.ShowDialog();

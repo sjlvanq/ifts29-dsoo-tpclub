@@ -22,7 +22,8 @@ namespace Club1
         public int NroCarnet { get { return nroCarnet; } set { nroCarnet = value;  } }
         private bool tieneAptoFisico;
         public bool TieneAptoFisico { get { return tieneAptoFisico; } set { tieneAptoFisico = value; } }
-        public bool EsSocio { get; set; }
+        private bool esSocio;
+        public bool ClienteEsSocio { get { return esSocio; } set { esSocio = value; } }
 
         // Implementación de IControlListadoRecord
         public string ClienteNombreCompleto => $"{nombre} {apellido}";

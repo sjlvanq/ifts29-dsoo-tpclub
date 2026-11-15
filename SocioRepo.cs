@@ -54,7 +54,7 @@ namespace Club1
                 int ordinalApto = reader.GetOrdinal("apto_fisico");
                 socio.TieneAptoFisico = !reader.IsDBNull(ordinalApto) && Convert.ToInt32(reader.GetValue(ordinalApto)) == 1;
                 int ordinalEsSocio = reader.GetOrdinal("es_socio");
-                socio.EsSocio = !reader.IsDBNull(ordinalEsSocio) && Convert.ToInt32(reader.GetValue(ordinalEsSocio)) == 1;
+                socio.ClienteEsSocio = !reader.IsDBNull(ordinalEsSocio) && Convert.ToInt32(reader.GetValue(ordinalEsSocio)) == 1;
                 socios.Add(socio);
             }
             return socios;
@@ -87,7 +87,7 @@ namespace Club1
             int ordinalApto = reader.GetOrdinal("apto_fisico");
             socio.TieneAptoFisico = !reader.IsDBNull(ordinalApto) && Convert.ToInt32(reader.GetValue(ordinalApto)) == 1;
             int ordinalEsSocio = reader.GetOrdinal("es_socio");
-            socio.EsSocio = !reader.IsDBNull(ordinalEsSocio) && Convert.ToInt32(reader.GetValue(ordinalEsSocio)) == 1;
+            socio.ClienteEsSocio = !reader.IsDBNull(ordinalEsSocio) && Convert.ToInt32(reader.GetValue(ordinalEsSocio)) == 1;
             return socio;
         }
 

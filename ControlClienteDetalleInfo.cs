@@ -39,7 +39,7 @@ namespace Club1
             lblControlClienteDetalleInfoHabilitado.BackColor = record.ClienteHabilitado ? this.conSeleccionColorLblHabilitado : this.conSeleccionColorLblInhabilitado;
             if (record is Socio socio)
             {
-                var esSocio = socio.EsSocio;
+                var esSocio = socio.ClienteEsSocio;
                 lblControlClienteDetalleInfoIds.Text = $"DNI: {record.ClienteDni}\nTeléfono: {socio.Telefono}" + (esSocio ? $"\nNro Carnet: {record.ClienteNroCarnet}" : "");
                 lblControlClienteDetalleInfoNombre.Image = esSocio ? imgCarnet : null;
             }

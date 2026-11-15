@@ -8,6 +8,7 @@ namespace Club1
     {
         public string ClienteNombreCompleto { get; }
         public bool ClienteHabilitado { get; }
+        public bool ClienteEsSocio { get; }
         public string ClienteNroCarnet { get; }
         public string ClienteDni { get; }
     }
