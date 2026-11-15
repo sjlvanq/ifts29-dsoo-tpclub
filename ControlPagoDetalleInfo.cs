@@ -30,8 +30,12 @@ namespace Club1
                 return;
             }
             lblControlPagoDetalleInfoNombre.Text = record.ClienteNombreCompleto;
-            lblControlPagoDetalleInfoHabilitado.Text = $"{(record.ClienteHabilitado ? "" : "No")} Habilitado";
-            lblControlPagoDetalleInfoHabilitado.BackColor = record.ClienteHabilitado ? this.conSeleccionColorLblHabilitado : this.conSeleccionColorLblInhabilitado;
+            lblControlPagoDetalleInfoHabilitado.Text = 
+                record.ClienteEsSocio ? 
+                    record.ClienteHabilitado ? "Socio sin deuda" : "Socio con deuda" : "No es socio";
+            lblControlPagoDetalleInfoHabilitado.BackColor = 
+                record.ClienteEsSocio ? 
+                    record.ClienteHabilitado ? conSeleccionColorLblHabilitado : conSeleccionColorLblInhabilitado : sinSeleccionColorLbl;
             lblControlPagoDetalleInfoIds.Text = $"Nro. Carnet: {record.ClienteNroCarnet}\nDNI: {record.ClienteDni}";
             lblControlPagoDetalleInfoIds.BackColor = this.conSeleccionColorLbl;
             lblControlPagoDetalleInfoNombre.Visible = true;
