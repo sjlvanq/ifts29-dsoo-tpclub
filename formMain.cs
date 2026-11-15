@@ -37,6 +37,7 @@ namespace Club1
             tabControlMain.MouseLeave += TabControlMain_MouseLeave;
             tabControlMain.SelectedTab = tabPageHome;
             panelPageHome.Visible = true;
+            StartPosition = FormStartPosition.CenterParent;
 
             this.lblPanelPageHomeTitle.Text = DefaultHomeTitleText;
             this.lblMainNotes.Text = getVersionNotes();
