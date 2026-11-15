@@ -36,6 +36,8 @@
             lblControlClienteDetalleInfoNombre.AutoSize = true;
             lblControlClienteDetalleInfoNombre.BackColor = SystemColors.ControlLightLight;
             lblControlClienteDetalleInfoNombre.Dock = DockStyle.Fill;
+            //lblControlClienteDetalleInfoNombre.Image = Properties.Resources.es_socio;
+            lblControlClienteDetalleInfoNombre.ImageAlign = ContentAlignment.TopRight;
             lblControlClienteDetalleInfoNombre.Location = new Point(3, 0);
             lblControlClienteDetalleInfoNombre.Name = "lblControlClienteDetalleInfoNombre";
             lblControlClienteDetalleInfoNombre.Padding = new Padding(0, 5, 0, 5);

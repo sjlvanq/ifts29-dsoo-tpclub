@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -16,9 +17,13 @@ namespace Club1
         private Color conSeleccionColorLblNombre = Color.FromKnownColor(KnownColor.ControlLightLight);
         private Color conSeleccionColorLblHabilitado = Color.LightGreen;
         private Color conSeleccionColorLblInhabilitado = Color.Orange;
-        public ControlClienteDetalleInfo()
+        private bool seleccionadoEsSocio = false;
+
+        private static readonly Image? imgCarnet = Properties.Resources.es_socio; public ControlClienteDetalleInfo()
         {
             InitializeComponent();
+
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(ControlClienteDetalleInfo));            
             Clear();
 
         }
@@ -30,13 +35,20 @@ namespace Club1
                 return;
             }
             lblControlClienteDetalleInfoNombre.Text = record.ClienteNombreCompleto;
-            lblControlClienteDetalleInfoHabilitado.Text = $"{(record.ClienteHabilitado ? "" : "Sin")} Apto físico";
+            lblControlClienteDetalleInfoHabilitado.Text = $"{(record.ClienteHabilitado ? "" : "Sin ")}Apto físico";
             lblControlClienteDetalleInfoHabilitado.BackColor = record.ClienteHabilitado ? this.conSeleccionColorLblHabilitado : this.conSeleccionColorLblInhabilitado;
             if (record is Socio socio)
-                lblControlClienteDetalleInfoIds.Text = $"DNI: {record.ClienteDni}\nTeléfono: {socio.Telefono}" + (socio.EsSocio ? $"\nNro Carnet: {record.ClienteNroCarnet}" : "");
+            {
+                var esSocio = socio.EsSocio;
+                lblControlClienteDetalleInfoIds.Text = $"DNI: {record.ClienteDni}\nTeléfono: {socio.Telefono}" + (esSocio ? $"\nNro Carnet: {record.ClienteNroCarnet}" : "");
+                lblControlClienteDetalleInfoNombre.Image = esSocio ? imgCarnet : null;
+            }
             else
+            {
                 // Defensivo por si se pasa un registro que no es Socio, aunque debería serlo
                 lblControlClienteDetalleInfoIds.Text = $"DNI: {record.ClienteDni}\nNro Carnet: {record.ClienteNroCarnet}";
+                lblControlClienteDetalleInfoNombre.Image = null;
+            }
             lblControlClienteDetalleInfoIds.BackColor = this.conSeleccionColorLbl;
             lblControlClienteDetalleInfoNombre.Visible = true;
             lblControlClienteDetalleInfoHabilitado.Visible = true;
