@@ -108,6 +108,7 @@
             btnPagePagosListadoDetalleGenerarComprobante.TabIndex = 0;
             btnPagePagosListadoDetalleGenerarComprobante.Text = "Generar Comprobante";
             btnPagePagosListadoDetalleGenerarComprobante.UseVisualStyleBackColor = true;
+            btnPagePagosListadoDetalleGenerarComprobante.Click += btnPagePagosListadoDetalleGenerarComprobante_Click;
             // 
             // controlPagoDetalleInfo1
             // 

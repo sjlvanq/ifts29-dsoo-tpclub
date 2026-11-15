@@ -51,5 +51,14 @@ namespace Club1
             InitializeComponent();
             this.Enabled = false;
         }
+
+        private void btnPagePagosListadoDetalleGenerarComprobante_Click(object sender, EventArgs e)
+        {
+            if (pagoActual == null)
+                return;
+
+            FormComprobantePago formComprobantePago = new FormComprobantePago(pagoActual);
+            formComprobantePago.ShowDialog();
+        }
     }
 }
