@@ -31,14 +31,14 @@
             components = new System.ComponentModel.Container();
             panelPageClientesListado = new TableLayoutPanel();
             dataGridClientesListadoLista = new DataGridView();
-            socioBindingSource = new BindingSource(components);
-            controlClientesDetalle1 = new ControlClientesDetalle();
             dniDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             telefonoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nroCarnetDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tieneAptoFisicoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            socioBindingSource = new BindingSource(components);
+            controlClientesDetalle1 = new ControlClientesDetalle();
             panelPageClientesListado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridClientesListadoLista).BeginInit();
             ((System.ComponentModel.ISupportInitialize)socioBindingSource).BeginInit();
@@ -81,19 +81,6 @@
             dataGridClientesListadoLista.StandardTab = true;
             dataGridClientesListadoLista.TabIndex = 0;
             dataGridClientesListadoLista.SelectionChanged += dataGridClientesListadoLista_SelectionChanged;
-            // 
-            // socioBindingSource
-            // 
-            socioBindingSource.DataSource = typeof(Socio);
-            // 
-            // controlClientesDetalle1
-            // 
-            controlClientesDetalle1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            controlClientesDetalle1.Location = new Point(3, 348);
-            controlClientesDetalle1.Name = "controlClientesDetalle1";
-            controlClientesDetalle1.Size = new Size(693, 154);
-            controlClientesDetalle1.TabIndex = 1;
-            controlClientesDetalle1.PagosHistorialRequested += controlClientesDetalle1_PagosHistorialRequested;
             // 
             // dniDataGridViewTextBoxColumn
             // 
@@ -148,6 +135,19 @@
             tieneAptoFisicoDataGridViewCheckBoxColumn.Name = "tieneAptoFisicoDataGridViewCheckBoxColumn";
             tieneAptoFisicoDataGridViewCheckBoxColumn.ReadOnly = true;
             tieneAptoFisicoDataGridViewCheckBoxColumn.Width = 150;
+            // 
+            // socioBindingSource
+            // 
+            socioBindingSource.DataSource = typeof(Socio);
+            // 
+            // controlClientesDetalle1
+            // 
+            controlClientesDetalle1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            controlClientesDetalle1.Location = new Point(3, 348);
+            controlClientesDetalle1.Name = "controlClientesDetalle1";
+            controlClientesDetalle1.Size = new Size(693, 154);
+            controlClientesDetalle1.TabIndex = 1;
+            controlClientesDetalle1.PagosHistorialRequested += controlClientesDetalle1_PagosHistorialRequested;
             // 
             // ControlClientesListado
             // 

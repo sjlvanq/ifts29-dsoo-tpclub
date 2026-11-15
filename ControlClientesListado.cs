@@ -61,7 +61,7 @@ namespace Club1
         private void MostrarSocios(IEnumerable<Socio> socios)
         {
             socioBindingSource.DataSource = socios.ToList();
-            if(socioBindingSource.Count == 0)
+            if (socioBindingSource.Count == 0)
             {
                 this.controlClientesDetalle1.MostrarDetalle(null);
             }
