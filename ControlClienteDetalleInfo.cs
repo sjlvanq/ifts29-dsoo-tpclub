@@ -19,7 +19,8 @@ namespace Club1
         private Color conSeleccionColorLblInhabilitado = Color.Orange;
         private bool seleccionadoEsSocio = false;
 
-        private static readonly Image? imgCarnet = Properties.Resources.es_socio; public ControlClienteDetalleInfo()
+        private static readonly Image? imgCarnet = Properties.Resources.es_socio;
+        public ControlClienteDetalleInfo()
         {
             InitializeComponent();
 
