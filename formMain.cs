@@ -65,14 +65,16 @@ namespace Club1
             };
 
             this.viewSwitcherPagos.View2Button.Text = "Registrar Pago";
-
+            
             this.viewSwitcherVencimientos.View2Button.Text = "Próximo Vencimiento para Cliente";
             var controlVencimientosListado = new ControlVencimientosListado() { Dock = DockStyle.Fill };
             this.viewSwitcherVencimientos.View1.Controls.Add(controlVencimientosListado);
+            var controlVencimientoCliente = new ControlVencimientoCliente() { Dock = DockStyle.Fill };
+            this.viewSwitcherVencimientos.View2.Controls.Add(controlVencimientoCliente);
             
             this.viewSwitcherVencimientos.Filtros.Visible = false;
             this.viewSwitcherVencimientos.ConfigureFiltersOnDefaultView(false);
-
+            this.viewSwitcherVencimientos.View1Link.Text = "Todos los vencimientos de hoy";
 
             this.viewSwitcherActividades.View2Button.Text = "Nueva Actividad";
             var controlActividadesListado = new ControlActividadesListado() { Dock = DockStyle.Fill };
