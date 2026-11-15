@@ -44,6 +44,7 @@ namespace Club1
             }
             socioActual = socio;
             this.Enabled = true;
+            this.btnPageClientesListadoDetalleGenerarCarnet.Enabled = socio.EsSocio;
             controlClienteDetalleInfo1.SetSocio(socio);
         }
 
