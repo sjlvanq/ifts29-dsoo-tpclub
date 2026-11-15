@@ -61,6 +61,30 @@ namespace Club1.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+        ///&lt;!-- Created with Inkscape (http://www.inkscape.org/) --&gt;
+        ///
+        ///&lt;svg
+        ///   version=&quot;1.1&quot;
+        ///   id=&quot;svg7287&quot;
+        ///   xml:space=&quot;preserve&quot;
+        ///   width=&quot;85mm&quot;
+        ///   height=&quot;53mm&quot;
+        ///   viewBox=&quot;0 0 424.99788 264.99868&quot;
+        ///   sodipodi:docname=&quot;carnet.svg&quot;
+        ///   inkscape:version=&quot;1.4.4 (dcaf3e7d9e, 2026-05-05)&quot;
+        ///   xmlns:inkscape=&quot;http://www.inkscape.org/namespaces/inkscape&quot;
+        ///   xmlns:sodipodi=&quot;http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd&quot;
+        ///   xmlns=&quot;http://www.w3.org/2000/svg&quot;
+        ///   xmln [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string carnet_svg {
+            get {
+                return ResourceManager.GetString("carnet_svg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
         /// </summary>
         internal static System.Drawing.Icon club_icon {
