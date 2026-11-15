@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Club1
 {
-    public class Actividad : IControlListadoRecord
+    public class Actividad
     {
         private String nombre;
         public String Nombre { get { return nombre; } set { nombre = value; } }
@@ -14,12 +14,6 @@ namespace Club1
 
         private DateTime fechaBaja;
         public DateTime FechaBaja { get { return fechaBaja; } set { fechaBaja = value; } }
-
-        // Implementación de IControlListadoRecord
-        public string ClienteNombreCompleto => nombre;
-        public bool ClienteHabilitado => FechaBaja > DateTime.Now;
-        public string ClienteNroCarnet => string.Empty;
-        public string ClienteDni => string.Empty;
 
         public Actividad(String nombre, Decimal precioDiario, DateTime fechaBaja)
         {
