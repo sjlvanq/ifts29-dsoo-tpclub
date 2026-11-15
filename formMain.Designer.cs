@@ -47,7 +47,7 @@
             viewSwitcherClientes = new ViewSwitcherClientes(components);
             tabPagePagos = new TabPage();
             panelPagePagos = new TableLayoutPanel();
-            viewSwitcherPagos = new ViewSwitcher(components);
+            viewSwitcherPagos = new ViewSwitcherPagos(components);
             tabPageVencimientos = new TabPage();
             viewSwitcherVencimientos = new ViewSwitcher(components);
             panelPageVencimientos = new TableLayoutPanel();
@@ -534,7 +534,7 @@
         private StatusStrip statusStripMain;
         private ToolStripStatusLabel toolStripStatusLabelMain;
         private ViewSwitcherClientes viewSwitcherClientes;
-        private ViewSwitcher viewSwitcherPagos;
+        private ViewSwitcherPagos viewSwitcherPagos;
         private TextBox lblMainNotes;
         private ViewSwitcher viewSwitcherActividades;
         private ViewSwitcher viewSwitcherVencimientos;

@@ -95,6 +95,12 @@ namespace Club1
 
             var controlPagosListado = new ControlPagosListado() { Dock = DockStyle.Fill };
             this.viewSwitcherPagos.View1.Controls.Add(controlPagosListado);
+            this.viewSwitcherPagos.ProximoVencimientoRequested += (_, args) =>
+            {
+                this.tabControlMain.SelectedTab = this.tabPageVencimientos;
+                this.viewSwitcherVencimientos.ShowView2();
+                controlVencimientoCliente.ConsultarPorDni(args.ClienteDni);
+            };
 
             this.viewSwitcherPagos.Filtros.ConfigurarCampos(new[]
             {
