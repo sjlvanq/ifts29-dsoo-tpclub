@@ -32,7 +32,6 @@
             panelPageClientesListado = new TableLayoutPanel();
             dataGridActividadesListadoLista = new DataGridView();
             actividadBindingSource = new BindingSource(components);
-            controlActividadesDetalle1 = new ControlActividadesDetalle();
             panelPageClientesListado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridActividadesListadoLista).BeginInit();
             ((System.ComponentModel.ISupportInitialize)actividadBindingSource).BeginInit();
@@ -43,13 +42,11 @@
             panelPageClientesListado.ColumnCount = 1;
             panelPageClientesListado.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             panelPageClientesListado.Controls.Add(dataGridActividadesListadoLista, 0, 0);
-            panelPageClientesListado.Controls.Add(controlActividadesDetalle1, 0, 1);
             panelPageClientesListado.Dock = DockStyle.Fill;
             panelPageClientesListado.Location = new Point(0, 0);
             panelPageClientesListado.Name = "panelPageClientesListado";
-            panelPageClientesListado.RowCount = 2;
-            panelPageClientesListado.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            panelPageClientesListado.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            panelPageClientesListado.RowCount = 1;
+            panelPageClientesListado.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             panelPageClientesListado.Size = new Size(699, 532);
             panelPageClientesListado.TabIndex = 0;
             // 
@@ -70,20 +67,11 @@
             dataGridActividadesListadoLista.ReadOnly = true;
             dataGridActividadesListadoLista.RowHeadersWidth = 62;
             dataGridActividadesListadoLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridActividadesListadoLista.Size = new Size(693, 313);
+            dataGridActividadesListadoLista.Size = new Size(693, 526);
             dataGridActividadesListadoLista.StandardTab = true;
             dataGridActividadesListadoLista.TabIndex = 0;
             dataGridActividadesListadoLista.CellContentClick += dataGridClientesListadoLista_CellContentClick;
             dataGridActividadesListadoLista.SelectionChanged += dataGridClientesListadoLista_SelectionChanged;
-            
-            // 
-            // controlActividadesDetalle1
-            // 
-            controlActividadesDetalle1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            controlActividadesDetalle1.Location = new Point(3, 348);
-            controlActividadesDetalle1.Name = "controlActividadesDetalle1";
-            controlActividadesDetalle1.Size = new Size(693, 154);
-            controlActividadesDetalle1.TabIndex = 1;
             // 
             // ControlActividadesListado
             // 
@@ -94,6 +82,7 @@
             Size = new Size(699, 532);
             panelPageClientesListado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridActividadesListadoLista).EndInit();
+            ((System.ComponentModel.ISupportInitialize)actividadBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -102,6 +91,5 @@
         private TableLayoutPanel panelPageClientesListado;
         private DataGridView dataGridActividadesListadoLista;
         private BindingSource actividadBindingSource;
-        private ControlActividadesDetalle controlActividadesDetalle1;
     }
 }
