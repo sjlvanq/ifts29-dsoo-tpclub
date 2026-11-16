@@ -50,6 +50,9 @@ namespace Club1
             {
                 var clienteEsSocio = pago.ClienteEsSocio;
                 lblControlPagoDetalleInfoNombre.Image = clienteEsSocio ? imgCarnet : null;
+                lblControlPagoDetalleInfoIds.Text += pago.Anulado
+                    ? $"\n\nEstado del pago: Anulado\nCausa: {pago.NotaAnulacion ?? "Sin causa registrada"}"
+                    : "\n\nEstado del pago: Vigente";
             }
             else
             {
