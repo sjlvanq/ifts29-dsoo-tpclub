@@ -47,6 +47,7 @@
             panelPageClientesListado.Name = "panelPageClientesListado";
             panelPageClientesListado.RowCount = 1;
             panelPageClientesListado.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            panelPageClientesListado.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             panelPageClientesListado.Size = new Size(699, 532);
             panelPageClientesListado.TabIndex = 0;
             // 

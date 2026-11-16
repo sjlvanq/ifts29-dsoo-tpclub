@@ -74,10 +74,10 @@ namespace Club1
         {
             if(dataGridActividadesListadoLista.SelectedRows.Count == 0)
             {
-                this.controlActividadesDetalle1.MostrarDetalle(null);
+                //this.controlActividadesDetalle1.MostrarDetalle(null);
                 return;
             }
-            this.controlActividadesDetalle1.MostrarDetalle(dataGridActividadesListadoLista.SelectedRows[0].DataBoundItem as Actividad);
+            //this.controlActividadesDetalle1.MostrarDetalle(dataGridActividadesListadoLista.SelectedRows[0].DataBoundItem as Actividad);
         }
     }
 }
