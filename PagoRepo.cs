@@ -42,6 +42,27 @@ namespace Club1
             return reader.Read();
         }
 
+        public void anular(int idPago, string notaAnulacion)
+        {
+            if (idPago <= 0)
+                throw new ArgumentOutOfRangeException(nameof(idPago), "El identificador del pago debe ser mayor a cero.");
+
+            if (string.IsNullOrWhiteSpace(notaAnulacion))
+                throw new ArgumentException("La causa de anulación es obligatoria.", nameof(notaAnulacion));
+
+            if (notaAnulacion.Trim().Length > 200)
+                throw new ArgumentException("La causa de anulación no puede superar 200 caracteres.", nameof(notaAnulacion));
+
+            using MySqlConnection con = conexion.conectar();
+            using MySqlCommand command = new("sp_anular_pago", con)
+            {
+                CommandType = System.Data.CommandType.StoredProcedure
+            };
+            command.Parameters.Add("@p_id_pago", MySqlDbType.Int32).Value = idPago;
+            command.Parameters.Add("@p_nota_anulacion", MySqlDbType.VarChar, 200).Value = notaAnulacion.Trim();
+            command.ExecuteNonQuery();
+        }
+
         public List<PagoListDTO> obtenerTodos()
         {
             List<PagoListDTO> pagos = new List<PagoListDTO>();
@@ -62,7 +83,9 @@ namespace Club1
                         a.nombre AS actividad_nombre,
                         p.medio_pago AS  medio_pago,
                         p.fecha_pago AS fecha_pago,
-                        p.importe AS importe
+                        p.importe AS importe,
+                        p.anulado AS anulado,
+                        p.nota_anulacion AS nota_anulacion
                     FROM pago p
                     INNER JOIN cliente c ON c.id_cliente = p.id_cliente
                     LEFT JOIN actividad a ON a.id_actividad = p.id_actividad";
@@ -107,7 +130,9 @@ namespace Club1
                             ClienteNroCarnet = reader["cliente_nro_carnet"]?.ToString() ?? string.Empty,
                             ClienteHabilitado = reader["cliente_habilitado"] != DBNull.Value && Convert.ToInt32(reader["cliente_habilitado"]) == 1,
                             ClienteEsSocio = reader["cliente_es_socio"] != DBNull.Value && Convert.ToInt32(reader["cliente_es_socio"]) == 1,
-                            ActividadNombre = reader["actividad_nombre"]?.ToString() ?? string.Empty
+                            ActividadNombre = reader["actividad_nombre"]?.ToString() ?? string.Empty,
+                            Anulado = Convert.ToBoolean(reader["anulado"]),
+                            NotaAnulacion = reader["nota_anulacion"] == DBNull.Value ? null : reader["nota_anulacion"].ToString()
                         };
                         pagos.Add(pagoDTO);
                     }
@@ -125,7 +150,7 @@ namespace Club1
 
             using (MySqlConnection con = conexion.conectar())
             {
-                string sqlSelect = @"SELECT id_pago, id_cliente, id_cuota, id_actividad, id_usuario, medio_pago, fecha_pago, importe
+                string sqlSelect = @"SELECT id_pago, id_cliente, id_cuota, id_actividad, id_usuario, medio_pago, fecha_pago, importe, anulado, nota_anulacion
                                      FROM pago
                                      WHERE id_cliente = @idCliente";
 
@@ -143,6 +168,10 @@ namespace Club1
                         pago.MedioPago = reader["medio_pago"]?.ToString() ?? string.Empty;
                         pago.FechaPago = reader.GetDateTime(reader.GetOrdinal("fecha_pago"));
                         pago.Importe = reader.GetDecimal(reader.GetOrdinal("importe"));
+                        pago.Anulado = Convert.ToBoolean(reader["anulado"]);
+                        pago.NotaAnulacion = reader.IsDBNull(reader.GetOrdinal("nota_anulacion"))
+                            ? null
+                            : reader.GetString(reader.GetOrdinal("nota_anulacion"));
 
                         int ordinalCuota = reader.GetOrdinal("id_cuota");
                         int ordinalActividad = reader.GetOrdinal("id_actividad");
@@ -165,7 +194,7 @@ namespace Club1
         {
             using (MySqlConnection con = conexion.conectar())
             {
-                string sqlSelect = @"SELECT id_pago, id_cliente, id_cuota, id_actividad, id_usuario, medio_pago, fecha_pago, importe
+                string sqlSelect = @"SELECT id_pago, id_cliente, id_cuota, id_actividad, id_usuario, medio_pago, fecha_pago, importe, anulado, nota_anulacion
                                      FROM pago
                                      WHERE id_pago = @idPago";
 
@@ -183,6 +212,10 @@ namespace Club1
                         pago.MedioPago = reader["medio_pago"]?.ToString() ?? string.Empty;
                         pago.FechaPago = reader.GetDateTime(reader.GetOrdinal("fecha_pago"));
                         pago.Importe = reader.GetDecimal(reader.GetOrdinal("importe"));
+                        pago.Anulado = Convert.ToBoolean(reader["anulado"]);
+                        pago.NotaAnulacion = reader.IsDBNull(reader.GetOrdinal("nota_anulacion"))
+                            ? null
+                            : reader.GetString(reader.GetOrdinal("nota_anulacion"));
 
                         int ordinalCuota = reader.GetOrdinal("id_cuota");
                         int ordinalActividad = reader.GetOrdinal("id_actividad");
