@@ -17,6 +17,8 @@ namespace Club1
         public string MedioPago { get; set; } = string.Empty;
         public DateTime FechaPago { get; set; }
         public decimal Importe { get; set; }
+        public bool Anulado { get; set; }
+        public string? NotaAnulacion { get; set; }
 
         public PagoListDTO(Pago pago, string? clienteNombreCompleto = null, string? clienteDni = null, string? clienteNroCarnet = null, string? actividadNombre = null)
         {
@@ -29,6 +31,8 @@ namespace Club1
             MedioPago = pago.MedioPago;
             FechaPago = pago.FechaPago;
             Importe = pago.Importe;
+            Anulado = pago.Anulado;
+            NotaAnulacion = pago.NotaAnulacion;
         }
     }
 }
