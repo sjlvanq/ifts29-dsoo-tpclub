@@ -43,3 +43,6 @@ Desktop.ini
 
 # Internal documentation files
 doc-internal/
+
+# Auxiliary scripts (temporary/single-use diagnostic utilities)
+aux_scripts/
