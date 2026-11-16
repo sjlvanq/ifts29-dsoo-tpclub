@@ -75,8 +75,7 @@ namespace Club1.Properties {
         ///   inkscape:version=&quot;1.4.4 (dcaf3e7d9e, 2026-05-05)&quot;
         ///   xmlns:inkscape=&quot;http://www.inkscape.org/namespaces/inkscape&quot;
         ///   xmlns:sodipodi=&quot;http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd&quot;
-        ///   xmlns=&quot;http://www.w3.org/2000/svg&quot;
-        ///   xmln [resto de la cadena truncado]&quot;;.
+        ///   xmlns=&quot;http://www.w3.org/200 [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string carnet_svg {
             get {
