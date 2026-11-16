@@ -14,6 +14,8 @@ namespace Club1
         public string MedioPago { get; set; }
         public DateTime FechaPago { get; set; }
         public decimal Importe { get; set; }
+        public bool Anulado { get; set; }
+        public string? NotaAnulacion { get; set; }
 
         public Pago()
         {
