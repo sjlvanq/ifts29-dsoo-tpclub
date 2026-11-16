@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
+using MySql.Data.MySqlClient;
 
 namespace Club1
 {
@@ -15,6 +16,7 @@ namespace Club1
         public ControlPagosListado()
         {
             InitializeComponent();
+            this.controlPagoDetalle.AnularPagoRequested += controlPagoDetalle_AnularPagoRequested;
             todosLosPagos = pagoRepo.obtenerTodos();
 
             MostrarPagos(todosLosPagos);
@@ -31,8 +33,7 @@ namespace Club1
 
         public void Recargar()
         {
-            todosLosPagos.Clear();
-            todosLosPagos.AddRange(pagoRepo.obtenerTodos());
+            todosLosPagos = pagoRepo.obtenerTodos();
             MostrarPagos(todosLosPagos);
         }
 
@@ -100,6 +101,40 @@ namespace Club1
             ProximoVencimientoRequestedEventArgrs e)
         {
             ProximoVencimientoRequested?.Invoke(this, e);
+        }
+
+        private void controlPagoDetalle_AnularPagoRequested(
+            object? sender,
+            PagoAnulacionRequestedEventArgs e)
+        {
+            try
+            {
+                pagoRepo.anular(e.IdPago, e.NotaAnulacion);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(
+                    this,
+                    $"No se pudo anular el pago.\n{ex.Message}",
+                    "Error al anular pago",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                Recargar();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(
+                    this,
+                    $"El pago se anuló, pero no se pudo actualizar el listado.\n{ex.Message}",
+                    "Error al actualizar pagos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
     }
