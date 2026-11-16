@@ -82,6 +82,7 @@
             // btnPageClientesListadoDetalleEliminar
             // 
             btnPageClientesListadoDetalleEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPageClientesListadoDetalleEliminar.Enabled = false;
             btnPageClientesListadoDetalleEliminar.Location = new Point(3, 281);
             btnPageClientesListadoDetalleEliminar.Name = "btnPageClientesListadoDetalleEliminar";
             btnPageClientesListadoDetalleEliminar.Size = new Size(304, 134);
@@ -92,6 +93,7 @@
             // btnPageClientesListadoDetalleConsultarPagos
             // 
             btnPageClientesListadoDetalleConsultarPagos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPageClientesListadoDetalleConsultarPagos.Enabled = false;
             btnPageClientesListadoDetalleConsultarPagos.Location = new Point(3, 142);
             btnPageClientesListadoDetalleConsultarPagos.Name = "btnPageClientesListadoDetalleConsultarPagos";
             btnPageClientesListadoDetalleConsultarPagos.Size = new Size(304, 133);
@@ -103,6 +105,7 @@
             // btnPageClientesListadoDetalleGenerarCarnet
             // 
             btnPageClientesListadoDetalleGenerarCarnet.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPageClientesListadoDetalleGenerarCarnet.Enabled = false;
             btnPageClientesListadoDetalleGenerarCarnet.Location = new Point(3, 3);
             btnPageClientesListadoDetalleGenerarCarnet.Name = "btnPageClientesListadoDetalleGenerarCarnet";
             btnPageClientesListadoDetalleGenerarCarnet.Size = new Size(304, 133);
