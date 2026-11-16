@@ -19,7 +19,7 @@
 
 USE club_deportivo;
 SET NAMES utf8mb4;
-SET @hoy = CURDATE();
+SET @hoy = CONVERT(CURDATE() USING utf8mb4);
 
 -- =============================================================================
 -- 0. REINICIO
@@ -38,13 +38,19 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- =============================================================================
 -- 1. USUARIOS
 -- =============================================================================
+
+-- User 'admin', Pass 'admin'. El sistema debe permitir cambiarlo o setearlo con valores personalizados al crear la base de datos. El hash corresponde a la contraseña 'admin' con SHA256.
+-- Asegura que el usuario administrador exista aunque este script se ejecute luego de database.sql.
+INSERT INTO usuario(id_usuario, nombre_usuario, password_hash, rol, activo)
+SELECT 3, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin', 1
+FROM DUAL
+WHERE NOT EXISTS (SELECT 1 FROM usuario WHERE nombre_usuario = 'admin');
+
 INSERT INTO usuario (id_usuario, nombre_usuario, password_hash, rol, activo) VALUES
   -- Recepción activa; clave Recep1-2026.
   (1, 'recepcion1', '7bfa9a35e908c4a4ca6d264d9393954c72a791e1273ad7588f0141a0e7ae6afb', 'recepcion', 1),
   -- Segundo usuario de recepción activo; clave Recep2-2026.
   (2, 'recepcion2', '3935c99d636acd05af0da5ca86041e904376df7f78823f3abc4ec3d79778c284', 'recepcion', 1),
-  -- Rol distinto del valor por defecto; clave Admin-2026.
-  (3, 'admin', '7101ccd96c6251273685b159b5de38c9c11f6db6890a9202128ba41981665955', 'administrador', 1),
   -- Usuario INACTIVO: login y cobros por SP deben rechazarse; conserva pagos históricos.
   (4, 'exempleado', '0a2930722abc3ac58e53f2593d6026c6c5ae5c9e8924fe1d8805a8ca42ffefee', 'recepcion', 0),
   -- Nombre de usuario de 30 caracteres (largo máximo); clave Noche-2026.

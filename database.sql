@@ -619,5 +619,8 @@ END$$
 
 DELIMITER ;
 
---- User 'admin', Pass 'admin'. El sistema  debe permitir cambiarlo o setearlo con valores personalizados al crear la base de datos. El hash corresponde a la contraseña 'admin' con SHA256.
-insert into usuario(nombre_usuario, password_hash, rol) values ("admin", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", "admin");
+-- User 'admin', Pass 'admin'. El sistema debe permitir cambiarlo o setearlo con valores personalizados al crear la base de datos. El hash corresponde a la contraseña 'admin' con SHA256.
+INSERT INTO usuario(nombre_usuario, password_hash, rol, activo)
+SELECT 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin', 1
+FROM DUAL
+WHERE NOT EXISTS (SELECT 1 FROM usuario WHERE nombre_usuario = 'admin');
