@@ -1,4 +1,4 @@
-﻿-- =============================================================================
+-- =============================================================================
 -- Club Deportivo - Proyecto Integrador (DSOO, IFTS 29)
 -- Script completo: tablas, triggers, vista y Stored Procedures.
 --
@@ -115,22 +115,85 @@ CREATE TABLE IF NOT EXISTS cuota (               -- un período mensual con venc
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS pago (
-  id_pago       INT NOT NULL AUTO_INCREMENT,
-  id_cliente    INT NOT NULL,
-  id_cuota      INT DEFAULT NULL,                 -- socio: cuota que se salda
-  id_actividad  INT DEFAULT NULL,                 -- no socio: actividad del día
-  id_usuario    INT NOT NULL,                     -- quién registró el cobro
-  medio_pago    ENUM('EFECTIVO','TARJETA') NOT NULL,
-  fecha_pago    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  importe       DECIMAL(10,2) NOT NULL,
+  id_pago        INT NOT NULL AUTO_INCREMENT,
+  id_cliente     INT NOT NULL,
+  id_cuota       INT DEFAULT NULL,                 -- socio: cuota que se salda
+  id_actividad   INT DEFAULT NULL,                 -- no socio: actividad del día
+  id_usuario     INT NOT NULL,                     -- quién registró el cobro
+  medio_pago     ENUM('EFECTIVO','TARJETA') NOT NULL,
+  fecha_pago     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  importe        DECIMAL(10,2) NOT NULL,
+  anulado        TINYINT(1) NOT NULL DEFAULT 0,
+  nota_anulacion VARCHAR(200) DEFAULT NULL,
+  id_cuota_vigente INT GENERATED ALWAYS AS (
+    CASE WHEN anulado = 0 THEN id_cuota ELSE NULL END
+  ) STORED,
   PRIMARY KEY (id_pago),
-  UNIQUE KEY uq_pago_cuota (id_cuota),            -- una cuota se paga una sola vez
+  UNIQUE KEY uq_pago_cuota (id_cuota_vigente),    -- una cuota tiene un solo pago vigente
   CONSTRAINT pago_ibfk_1 FOREIGN KEY (id_cliente)   REFERENCES cliente (id_cliente),
   CONSTRAINT pago_ibfk_2 FOREIGN KEY (id_cuota)     REFERENCES cuota (id_cuota),
   CONSTRAINT pago_ibfk_3 FOREIGN KEY (id_actividad) REFERENCES actividad (id_actividad),
   CONSTRAINT pago_ibfk_4 FOREIGN KEY (id_usuario)   REFERENCES usuario (id_usuario),
   CONSTRAINT chk_pago_destino CHECK ((id_cuota IS NULL) <> (id_actividad IS NULL))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- CREATE TABLE IF NOT EXISTS no actualiza tablas preexistentes.
+SET @pago_ddl = IF(
+  (SELECT COUNT(*) FROM information_schema.columns
+   WHERE table_schema = DATABASE() AND table_name = 'pago' AND column_name = 'anulado') = 0,
+  'ALTER TABLE pago ADD COLUMN anulado TINYINT(1) NOT NULL DEFAULT 0',
+  'SELECT 1'
+);
+PREPARE pago_stmt FROM @pago_ddl;
+EXECUTE pago_stmt;
+DEALLOCATE PREPARE pago_stmt;
+
+SET @pago_ddl = IF(
+  (SELECT COUNT(*) FROM information_schema.columns
+   WHERE table_schema = DATABASE() AND table_name = 'pago' AND column_name = 'nota_anulacion') = 0,
+  'ALTER TABLE pago ADD COLUMN nota_anulacion VARCHAR(200) DEFAULT NULL',
+  'SELECT 1'
+);
+PREPARE pago_stmt FROM @pago_ddl;
+EXECUTE pago_stmt;
+DEALLOCATE PREPARE pago_stmt;
+
+SET @pago_ddl = IF(
+  (SELECT COUNT(*) FROM information_schema.columns
+   WHERE table_schema = DATABASE() AND table_name = 'pago' AND column_name = 'id_cuota_vigente') = 0,
+  'ALTER TABLE pago ADD COLUMN id_cuota_vigente INT GENERATED ALWAYS AS (CASE WHEN anulado = 0 THEN id_cuota ELSE NULL END) STORED',
+  'SELECT 1'
+);
+PREPARE pago_stmt FROM @pago_ddl;
+EXECUTE pago_stmt;
+DEALLOCATE PREPARE pago_stmt;
+
+SELECT COUNT(*) INTO @pago_indice_cuota_antiguo
+FROM information_schema.statistics
+WHERE table_schema = DATABASE()
+  AND table_name = 'pago'
+  AND index_name = 'uq_pago_cuota'
+  AND column_name = 'id_cuota'
+  AND non_unique = 0;
+
+SELECT COUNT(*) INTO @pago_indice_cuota_vigente
+FROM information_schema.statistics
+WHERE table_schema = DATABASE()
+  AND table_name = 'pago'
+  AND index_name = 'uq_pago_cuota'
+  AND column_name = 'id_cuota_vigente'
+  AND non_unique = 0;
+
+SET @pago_ddl = IF(
+  @pago_indice_cuota_antiguo > 0,
+  'ALTER TABLE pago DROP INDEX uq_pago_cuota, ADD UNIQUE KEY uq_pago_cuota (id_cuota_vigente)',
+  IF(@pago_indice_cuota_vigente = 0,
+     'ALTER TABLE pago ADD UNIQUE KEY uq_pago_cuota (id_cuota_vigente)',
+     'SELECT 1')
+);
+PREPARE pago_stmt FROM @pago_ddl;
+EXECUTE pago_stmt;
+DEALLOCATE PREPARE pago_stmt;
 
 -- Promoción por defecto para contratos de una sola cuota
 INSERT INTO promocion (nombre, n_cuotas, descuento_pct)
@@ -196,7 +259,8 @@ SELECT c.id_cliente, MAX(cu.fecha_vencimiento) AS habilitado_hasta
 FROM cuota cu
 JOIN pago pg     ON pg.id_cuota = cu.id_cuota
 JOIN contrato c  ON c.id_contrato = cu.id_contrato
-WHERE CURDATE() BETWEEN cu.fecha_desde AND cu.fecha_vencimiento
+WHERE pg.anulado = 0
+  AND CURDATE() BETWEEN cu.fecha_desde AND cu.fecha_vencimiento
 GROUP BY c.id_cliente;
 
 -- =============================================================================
@@ -316,7 +380,8 @@ BEGIN
          sig.id_cuota IS NOT NULL    AS tiene_cuota_siguiente,
          sig.importe                 AS importe_cuota_siguiente
   FROM cuota cu
-  JOIN pago pg      ON pg.id_cuota    = cu.id_cuota          -- solo cuotas efectivamente pagadas
+  JOIN pago pg      ON pg.id_cuota    = cu.id_cuota
+                    AND pg.anulado   = 0                     -- solo cuotas efectivamente pagadas
   JOIN contrato c   ON c.id_contrato  = cu.id_contrato
   JOIN cliente cl   ON cl.id_cliente  = c.id_cliente
   JOIN plan p       ON p.id_plan      = c.id_plan
@@ -327,6 +392,7 @@ BEGIN
           SELECT 1
           FROM cuota cu2
           JOIN pago pg2     ON pg2.id_cuota   = cu2.id_cuota
+                            AND pg2.anulado  = 0
           JOIN contrato c2  ON c2.id_contrato = cu2.id_contrato
           WHERE c2.id_cliente = c.id_cliente
             AND cu2.fecha_vencimiento > v_fecha)
@@ -391,7 +457,7 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La cuota no existe';
   END IF;
 
-  IF EXISTS (SELECT 1 FROM pago WHERE id_cuota = p_id_cuota) THEN
+  IF EXISTS (SELECT 1 FROM pago WHERE id_cuota = p_id_cuota AND anulado = 0) THEN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La cuota ya fue pagada';
   END IF;
 
@@ -426,6 +492,44 @@ BEGIN
          v_venc                          AS periodo_hasta,
          (v_hoy BETWEEN v_desde AND v_venc) AS habilita_hoy,
          v_aviso                         AS aviso;
+END$$
+
+-- -----------------------------------------------------------------------------
+-- sp_anular_pago
+-- Marca un pago como anulado y conserva el motivo para auditoría.
+-- -----------------------------------------------------------------------------
+DROP PROCEDURE IF EXISTS sp_anular_pago$$
+CREATE PROCEDURE sp_anular_pago(
+  IN p_id_pago        INT,
+  IN p_nota_anulacion TEXT
+)
+BEGIN
+  DECLARE v_nota TEXT;
+
+  IF p_id_pago IS NULL OR p_id_pago <= 0 THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El identificador del pago es inválido';
+  END IF;
+
+  SET v_nota = TRIM(p_nota_anulacion);
+  IF v_nota IS NULL OR CHAR_LENGTH(v_nota) = 0 THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La causa de anulación es obligatoria';
+  END IF;
+  IF CHAR_LENGTH(v_nota) > 200 THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La causa de anulación no puede superar 200 caracteres';
+  END IF;
+
+  UPDATE pago
+     SET anulado = 1,
+         nota_anulacion = v_nota
+   WHERE id_pago = p_id_pago
+     AND anulado = 0;
+
+  IF ROW_COUNT() = 0 THEN
+    IF NOT EXISTS (SELECT 1 FROM pago WHERE id_pago = p_id_pago) THEN
+      SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El pago no existe';
+    END IF;
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El pago ya fue anulado';
+  END IF;
 END$$
 
 -- -----------------------------------------------------------------------------
@@ -515,44 +619,5 @@ END$$
 
 DELIMITER ;
 
--- =============================================================================
--- 5. JUEGO DE PRUEBA (comentado: quitar los comentarios en una base vacía)
--- Las fechas del contrato son de ejemplo; las consultas de vencimiento usan
--- fechas explícitas, así que el resultado no depende del día de ejecución,
--- salvo vw_socio_habilitado y los avisos de pago, que usan CURDATE().
--- =============================================================================
-/*
-INSERT INTO usuario (nombre_usuario, password_hash, rol) VALUES ('recepcion1', 'hash_de_ejemplo', 'recepcion');
-INSERT INTO plan (nombre, precio_mensual) VALUES ('Musculación', 20000);
-INSERT INTO promocion (nombre, n_cuotas, descuento_pct) VALUES ('3 cuotas con tarjeta', 3, 10);
-INSERT INTO actividad (nombre, precio_diario) VALUES ('Musculación', 3000);
-INSERT INTO cliente (dni, nombre, apellido, telefono, apto_fisico) VALUES ('30111222', 'Ana', 'Pérez', '381-5550001', 1);
-INSERT INTO cliente (dni, nombre, apellido, telefono) VALUES ('30333444', 'Luis', 'Gómez', '381-5550002');
-
--- Contratar el plan con la promoción de 3 cuotas (id 2): 3 cuotas de 18000
-CALL sp_contratar_plan(1, 1, 2, '2026-11-10');
--- Repetir: error, ya tiene cuotas que cubren esa fecha
--- CALL sp_contratar_plan(1, 1, 2, '2026-11-10');
-
-SELECT * FROM cuota;                                   -- 10/11-09/12, 10/12-09/01, 10/01-09/02
-
--- Pagos de cuotas
--- CALL sp_registrar_pago_cuota(1, 1, 'EFECTIVO');     -- error: exige tarjeta
-CALL sp_registrar_pago_cuota(1, 1, 'TARJETA');
--- CALL sp_registrar_pago_cuota(1, 1, 'TARJETA');      -- error: la cuota ya fue pagada
-
--- Listado de vencimientos
-CALL sp_listado_vencimientos_diario('2026-12-08');     -- vacío
-CALL sp_listado_vencimientos_diario('2026-12-09');     -- aparece Ana, con cuota siguiente de 18000
-
--- Pagar por adelantado la cuota 2: ya no figura en el listado del 09/12
-CALL sp_registrar_pago_cuota(2, 1, 'TARJETA');
-CALL sp_listado_vencimientos_diario('2026-12-09');     -- vacío
-
--- Pago de actividad de un no socio
-CALL sp_registrar_pago_actividad(2, 1, 1, 'EFECTIVO'); -- 3000, aviso de apto físico faltante
-
--- Triggers: ambos deben fallar
--- UPDATE plan SET precio_mensual = 25000 WHERE id_plan = 1;
--- UPDATE cuota SET importe = 1 WHERE id_cuota = 1;
-*/
+--- User 'admin', Pass 'admin'. El sistema  debe permitir cambiarlo o setearlo con valores personalizados al crear la base de datos. El hash corresponde a la contraseña 'admin' con SHA256.
+insert into usuario(nombre_usuario, password_hash, rol) values ("admin", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", "admin");
