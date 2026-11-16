@@ -30,7 +30,7 @@
         {
             panelPagePagosListadoDetalle = new TableLayoutPanel();
             panelPagePagosListadoDetalleAcciones = new TableLayoutPanel();
-            btnPagePagosListadoDetalleEliminar = new Button();
+            btnPagePagosListadoDetalleAnular = new Button();
             btnPagePagosListadoDetalleConsultarProximoVencimiento = new Button();
             btnPagePagosListadoDetalleGenerarComprobante = new Button();
             controlPagoDetalleInfo1 = new ControlPagoDetalleInfo();
@@ -66,7 +66,7 @@
             // 
             panelPagePagosListadoDetalleAcciones.ColumnCount = 1;
             panelPagePagosListadoDetalleAcciones.ColumnStyles.Add(new ColumnStyle());
-            panelPagePagosListadoDetalleAcciones.Controls.Add(btnPagePagosListadoDetalleEliminar, 0, 2);
+            panelPagePagosListadoDetalleAcciones.Controls.Add(btnPagePagosListadoDetalleAnular, 0, 2);
             panelPagePagosListadoDetalleAcciones.Controls.Add(btnPagePagosListadoDetalleConsultarProximoVencimiento, 0, 1);
             panelPagePagosListadoDetalleAcciones.Controls.Add(btnPagePagosListadoDetalleGenerarComprobante, 0, 0);
             panelPagePagosListadoDetalleAcciones.Dock = DockStyle.Fill;
@@ -79,19 +79,22 @@
             panelPagePagosListadoDetalleAcciones.Size = new Size(310, 418);
             panelPagePagosListadoDetalleAcciones.TabIndex = 0;
             // 
-            // btnPagePagosListadoDetalleEliminar
+            // btnPagePagosListadoDetalleAnular
             // 
-            btnPagePagosListadoDetalleEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnPagePagosListadoDetalleEliminar.Location = new Point(3, 281);
-            btnPagePagosListadoDetalleEliminar.Name = "btnPagePagosListadoDetalleEliminar";
-            btnPagePagosListadoDetalleEliminar.Size = new Size(304, 134);
-            btnPagePagosListadoDetalleEliminar.TabIndex = 2;
-            btnPagePagosListadoDetalleEliminar.Text = "Eliminar";
-            btnPagePagosListadoDetalleEliminar.UseVisualStyleBackColor = true;
+            btnPagePagosListadoDetalleAnular.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPagePagosListadoDetalleAnular.Enabled = false;
+            btnPagePagosListadoDetalleAnular.Location = new Point(3, 281);
+            btnPagePagosListadoDetalleAnular.Name = "btnPagePagosListadoDetalleAnular";
+            btnPagePagosListadoDetalleAnular.Size = new Size(304, 134);
+            btnPagePagosListadoDetalleAnular.TabIndex = 2;
+            btnPagePagosListadoDetalleAnular.Text = "Anular";
+            btnPagePagosListadoDetalleAnular.UseVisualStyleBackColor = true;
+            btnPagePagosListadoDetalleAnular.Click += btnPagePagosListadoDetalleAnular_Click;
             // 
             // btnPagePagosListadoDetalleConsultarProximoVencimiento
             // 
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPagePagosListadoDetalleConsultarProximoVencimiento.Enabled = false;
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Location = new Point(3, 142);
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Name = "btnPagePagosListadoDetalleConsultarProximoVencimiento";
             btnPagePagosListadoDetalleConsultarProximoVencimiento.Size = new Size(304, 133);
@@ -103,6 +106,7 @@
             // btnPagePagosListadoDetalleGenerarComprobante
             // 
             btnPagePagosListadoDetalleGenerarComprobante.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnPagePagosListadoDetalleGenerarComprobante.Enabled = false;
             btnPagePagosListadoDetalleGenerarComprobante.Location = new Point(3, 3);
             btnPagePagosListadoDetalleGenerarComprobante.Name = "btnPagePagosListadoDetalleGenerarComprobante";
             btnPagePagosListadoDetalleGenerarComprobante.Size = new Size(304, 133);
@@ -137,7 +141,7 @@
         private TableLayoutPanel panelPagePagosListadoDetalleAcciones;
         private Button btnPagePagosListadoDetalleGenerarComprobante;
         private Button btnPagePagosListadoDetalleConsultarProximoVencimiento;
-        private Button btnPagePagosListadoDetalleEliminar;
+        private Button btnPagePagosListadoDetalleAnular;
         private ControlPagoDetalleInfo controlPagoDetalleInfo1;
     }
 }

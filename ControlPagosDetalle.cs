@@ -11,6 +11,7 @@ namespace Club1
     public partial class ControlPagosDetalle : UserControl
     {
         public event EventHandler<ProximoVencimientoRequestedEventArgrs>? ProximoVencimientoRequested;
+        public event EventHandler<PagoAnulacionRequestedEventArgs>? AnularPagoRequested;
 
         private PagoListDTO? pagoActual;
 
@@ -25,7 +26,7 @@ namespace Club1
 
                 field = value;
                 this.btnPagePagosListadoDetalleGenerarComprobante.Enabled = value;
-                this.btnPagePagosListadoDetalleEliminar.Enabled = value;
+                this.btnPagePagosListadoDetalleAnular.Enabled = value;
                 this.btnPagePagosListadoDetalleConsultarProximoVencimiento.Enabled = value;
 
                 if (!value)
@@ -43,6 +44,8 @@ namespace Club1
             }
             this.Enabled = true;
             pagoActual = pago;
+            this.btnPagePagosListadoDetalleGenerarComprobante.Enabled = !pago.Anulado;
+            this.btnPagePagosListadoDetalleAnular.Enabled = !pago.Anulado;
             //this.lblPagePagosListadoDetalleDetalle.Text = $"DNI: {pago.Dni}\nNombre: {pago.Nombre}\nApellido: {pago.Apellido}\nTeléfono: {pago.Telefono}\nNro Carnet: {pago.NroCarnet}\nApto Físico: {(pago.TieneAptoFisico ? "Sí" : "No")}";
             this.btnPagePagosListadoDetalleConsultarProximoVencimiento.Enabled = pago.ClienteEsSocio;
             this.controlPagoDetalleInfo1.SetPago(pago);
@@ -71,6 +74,101 @@ namespace Club1
             ProximoVencimientoRequested?.Invoke(
                 this,
                 new ProximoVencimientoRequestedEventArgrs(pagoActual.ClienteDni));
+        }
+
+        private void btnPagePagosListadoDetalleAnular_Click(object sender, EventArgs e)
+        {
+            if (pagoActual == null || pagoActual.Anulado)
+                return;
+
+            string? notaAnulacion = SolicitarNotaAnulacion();
+            if (notaAnulacion == null)
+                return;
+
+            DialogResult confirmacion = MessageBox.Show(
+                this,
+                $"¿Confirma la anulación del pago {pagoActual.IdPago}?\n\nCausa: {notaAnulacion}",
+                "Confirmar anulación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirmacion == DialogResult.Yes)
+            {
+                AnularPagoRequested?.Invoke(
+                    this,
+                    new PagoAnulacionRequestedEventArgs(pagoActual.IdPago, notaAnulacion));
+            }
+        }
+
+        private string? SolicitarNotaAnulacion()
+        {
+            using Form dialogo = new()
+            {
+                Text = "Causa de anulación",
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                StartPosition = FormStartPosition.CenterParent,
+                MinimizeBox = false,
+                MaximizeBox = false,
+                ShowInTaskbar = false,
+                ClientSize = new Size(420, 180)
+            };
+
+            Label etiqueta = new()
+            {
+                AutoSize = true,
+                Location = new Point(12, 12),
+                Text = "Describa la causa (obligatoria, máximo 200 caracteres):"
+            };
+            TextBox texto = new()
+            {
+                Location = new Point(12, 38),
+                Size = new Size(396, 82),
+                Multiline = true,
+                MaxLength = 200,
+                ScrollBars = ScrollBars.Vertical
+            };
+            Button aceptar = new()
+            {
+                Text = "Anular",
+                Location = new Point(228, 134),
+                Size = new Size(85, 32)
+            };
+            Button cancelar = new()
+            {
+                Text = "Cancelar",
+                Location = new Point(323, 134),
+                Size = new Size(85, 32),
+                DialogResult = DialogResult.Cancel
+            };
+
+            aceptar.Click += (_, _) =>
+            {
+                if (string.IsNullOrWhiteSpace(texto.Text))
+                {
+                    MessageBox.Show(
+                        dialogo,
+                        "Debe indicar la causa de anulación.",
+                        "Dato obligatorio",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    texto.Focus();
+                    return;
+                }
+
+                dialogo.DialogResult = DialogResult.OK;
+                dialogo.Close();
+            };
+
+            dialogo.Controls.Add(etiqueta);
+            dialogo.Controls.Add(texto);
+            dialogo.Controls.Add(aceptar);
+            dialogo.Controls.Add(cancelar);
+            dialogo.AcceptButton = aceptar;
+            dialogo.CancelButton = cancelar;
+
+            return dialogo.ShowDialog(this) == DialogResult.OK
+                ? texto.Text.Trim()
+                : null;
         }
     }
 }
