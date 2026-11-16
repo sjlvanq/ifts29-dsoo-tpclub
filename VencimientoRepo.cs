@@ -110,7 +110,7 @@ namespace Club1
                 JOIN contrato c ON c.id_cliente = cl.id_cliente
                 JOIN plan p ON p.id_plan = c.id_plan
                 JOIN cuota cu ON cu.id_contrato = c.id_contrato
-                JOIN pago pg ON pg.id_cuota = cu.id_cuota
+                JOIN pago pg ON pg.id_cuota = cu.id_cuota AND pg.anulado = 0
                 LEFT JOIN cuota sig
                        ON sig.id_contrato = c.id_contrato
                       AND sig.nro_cuota = cu.nro_cuota + 1
@@ -120,7 +120,7 @@ namespace Club1
                   AND NOT EXISTS (
                       SELECT 1
                       FROM cuota cu2
-                      JOIN pago pg2 ON pg2.id_cuota = cu2.id_cuota
+                      JOIN pago pg2 ON pg2.id_cuota = cu2.id_cuota AND pg2.anulado = 0
                       JOIN contrato c2 ON c2.id_contrato = cu2.id_contrato
                       WHERE c2.id_cliente = cl.id_cliente
                         AND cu2.fecha_vencimiento > cu.fecha_vencimiento
