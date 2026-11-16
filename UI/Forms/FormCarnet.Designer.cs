@@ -1,4 +1,6 @@
-﻿namespace Club1
+﻿using Club1.UI.Controls;
+
+namespace Club1.UI.Forms
 {
     partial class FormCarnet
     {

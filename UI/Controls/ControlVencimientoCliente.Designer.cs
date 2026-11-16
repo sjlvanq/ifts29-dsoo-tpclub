@@ -1,4 +1,4 @@
-namespace Club1
+namespace Club1.UI.Controls
 {
     partial class ControlVencimientoCliente
     {

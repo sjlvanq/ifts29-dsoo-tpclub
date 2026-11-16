@@ -1,4 +1,5 @@
 using System;
+using Club1.Common;
 
 namespace Club1.Models
 {

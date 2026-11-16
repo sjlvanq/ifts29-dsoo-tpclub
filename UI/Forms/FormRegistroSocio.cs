@@ -1,3 +1,6 @@
+using Club1.Common;
+using Club1.Models;
+
 namespace Club1.UI.Forms
 {
     public partial class FormRegistroSocio : Form

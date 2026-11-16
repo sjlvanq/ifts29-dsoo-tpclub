@@ -1,4 +1,7 @@
-namespace Club1
+using Club1.Common;
+using Club1.UI.Controls;
+
+namespace Club1.UI.Forms
 {
     partial class FormLoginAndDbConnection
     {

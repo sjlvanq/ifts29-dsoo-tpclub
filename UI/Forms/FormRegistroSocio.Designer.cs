@@ -1,4 +1,7 @@
-﻿namespace Club1
+﻿using Club1.UI.Controls;
+using Club1.Common;
+
+namespace Club1.UI.Forms
 {
     partial class FormRegistroSocio
     {

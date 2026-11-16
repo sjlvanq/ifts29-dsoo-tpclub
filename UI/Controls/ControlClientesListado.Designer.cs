@@ -1,4 +1,6 @@
-﻿namespace Club1
+﻿using Club1.Models;
+
+namespace Club1.UI.Controls
 {
     partial class ControlClientesListado
     {

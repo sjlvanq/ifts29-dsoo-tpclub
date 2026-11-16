@@ -1,3 +1,6 @@
+using Club1.Common;
+using Club1.UI.Forms;
+
 namespace Club1
 {
     internal static class Program
@@ -13,7 +16,7 @@ namespace Club1
             }
 
             Club club = new Club();
-            Application.Run(new formMain(club, login.UsuarioAutenticadoId));
+            Application.Run(new FormMain(club, login.UsuarioAutenticadoId));
         }
     }
 }
