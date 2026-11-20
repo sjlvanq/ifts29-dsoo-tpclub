@@ -1,5 +1,4 @@
 using System;
-using System.Drawing.Printing;
 using System.Windows.Forms;
 using Club1.Models;
 using Club1.Data.Repositories;
@@ -52,16 +51,5 @@ namespace Club1.UI.Forms
                    $"Fecha de emisión: {DateTime.Now:dd/MM/yyyy HH:mm}";
         }
 
-        private void InitializeComponent()
-        {
-            SuspendLayout();
-            // 
-            // FormComprobantePago
-            // 
-            //ClientSize = new Size(500, 550);
-            Name = "FormComprobantePago";
-            ResumeLayout(false);
-
-        }
     }
 }

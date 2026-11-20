@@ -46,3 +46,4 @@ doc-internal/
 
 # Auxiliary scripts (temporary/single-use diagnostic utilities)
 aux_scripts/
+/doc/*

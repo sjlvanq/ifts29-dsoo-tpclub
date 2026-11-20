@@ -54,14 +54,6 @@ namespace Club1.UI.Controls
                     _isUpdatingItemSize = false;
                 }
             }
-
-            /*
-            protected override void OnControlAdded(ControlEventArgs e)
-            {
-                base.OnControlAdded(e);
-                //this.TabPages[this.TabCount - 1].Controls.Add(new TableLayoutPanel());
-            }
-            */
         }
     }
 }

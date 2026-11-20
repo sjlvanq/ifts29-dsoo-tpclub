@@ -61,7 +61,6 @@
             panelPageClientesListadoDetalle.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             panelPageClientesListadoDetalle.Size = new Size(632, 424);
             panelPageClientesListadoDetalle.TabIndex = 0;
-            panelPageClientesListadoDetalle.Paint += tableLayoutPanel1_Paint;
             // 
             // panelPageClientesListadoDetalleAcciones
             // 
@@ -98,7 +97,6 @@
             ControlClienteDetalleLabel1.Size = new Size(310, 424);
             ControlClienteDetalleLabel1.TabIndex = 1;
             ControlClienteDetalleLabel1.Text = "Seleccione un cliente\r\npara habilitar los botones\r\nde acción.\r\n";
-            ControlClienteDetalleLabel1.Click += ControlClienteDetalleLabel1_Click;
             // 
             // ControlActividadesDetalle
             // 

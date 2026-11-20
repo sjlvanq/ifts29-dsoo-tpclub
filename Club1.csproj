@@ -14,38 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ControlDetalleInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="ControlClienteDetalleInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="IControlDetalleInfo.cs" />
-    <Compile Update="FormLoginAndDbConnection.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormLoginAndDbConnection.Designer.cs">
-      <DependentUpon>FormLoginAndDbConnection.cs</DependentUpon>
-    </Compile>
-    <Compile Update="ControlActividadesListado.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="ControlActividadesDetalle.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="ControlPagoDetalleInfo.cs" />
-    <Compile Update="ControlPagosDetalle.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="ControlClientesListado.bkup.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="ControlClientesRegistro.bkup.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="ControlVencimientosListado.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -18,17 +17,14 @@ namespace Club1.UI.Controls
         private string sinSeleccionMsg = "Seleccione un registro\r\npara habilitar los botones\r\nde acción.\r\n";
         private Color sinSeleccionColorLbl = Color.Gray;
         private Color conSeleccionColorLbl = Color.LightGray;
-        private Color conSeleccionColorLblNombre = Color.FromKnownColor(KnownColor.ControlLightLight);
         private Color conSeleccionColorLblHabilitado = Color.LightGreen;
         private Color conSeleccionColorLblInhabilitado = Color.Orange;
-        private bool seleccionadoEsSocio = false;
 
         private static readonly Image? imgCarnet = Properties.Resources.es_socio;
         public ControlClienteDetalleInfo()
         {
             InitializeComponent();
 
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(ControlClienteDetalleInfo));            
             Clear();
 
         }

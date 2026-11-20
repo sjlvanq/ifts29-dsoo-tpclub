@@ -1,5 +1,4 @@
 using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Tls;
 using Club1.Data.Repositories;
 using Club1.Common;
 using Club1.Data;
@@ -154,9 +153,5 @@ namespace Club1.UI.Forms
             }
         }
 
-        private void FormLoginAndDbConection_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

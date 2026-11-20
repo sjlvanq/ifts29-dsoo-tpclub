@@ -84,11 +84,6 @@ namespace Club1.UI.Forms
             this.Close();
         }
 
-        private void cmbDescargar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDescargar_Click(object sender, EventArgs e)
         {
             if (picCarnet.Image == null)

@@ -69,19 +69,5 @@ namespace Club1.UI.Controls
             dataGridActividadesListadoLista.DataSource = actividades.ToList();
         }
 
-        private void dataGridClientesListadoLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridClientesListadoLista_SelectionChanged(object sender, EventArgs e)
-        {
-            if(dataGridActividadesListadoLista.SelectedRows.Count == 0)
-            {
-                //this.controlActividadesDetalle1.MostrarDetalle(null);
-                return;
-            }
-            //this.controlActividadesDetalle1.MostrarDetalle(dataGridActividadesListadoLista.SelectedRows[0].DataBoundItem as Actividad);
-        }
     }
 }

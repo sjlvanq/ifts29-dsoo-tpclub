@@ -51,7 +51,6 @@ namespace Club1.UI.Controls
             pagoActual = pago;
             this.btnPagePagosListadoDetalleGenerarComprobante.Enabled = !pago.Anulado;
             this.btnPagePagosListadoDetalleAnular.Enabled = !pago.Anulado;
-            //this.lblPagePagosListadoDetalleDetalle.Text = $"DNI: {pago.Dni}\nNombre: {pago.Nombre}\nApellido: {pago.Apellido}\nTeléfono: {pago.Telefono}\nNro Carnet: {pago.NroCarnet}\nApto Físico: {(pago.TieneAptoFisico ? "Sí" : "No")}";
             this.btnPagePagosListadoDetalleConsultarProximoVencimiento.Enabled = pago.ClienteEsSocio;
             this.controlPagoDetalleInfo1.SetPago(pago);
         }

@@ -145,7 +145,6 @@
         private TableLayoutPanel layoutViewSwitcher;
         private Panel panelView1;
         private Panel panelView2;
-        //private List<Panel> Views = new List<Panel>();
         private TableLayoutPanel layoutViewSwitcherHeader;
         private Button btnShowView2;
         private LinkLabel lnkLblBack;

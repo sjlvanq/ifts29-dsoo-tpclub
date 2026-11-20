@@ -20,8 +20,6 @@ namespace Club1.UI.Controls
 
         private Socio? socioActual;
 
-        private String carnetTemplate;
-
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new bool Enabled
         {
@@ -59,18 +57,6 @@ namespace Club1.UI.Controls
         {
             InitializeComponent();
             this.Enabled = false;
-            this.carnetTemplate = Properties.Resources.carnet_svg.ToString();
-        }
-
-        private void btnPageClientesListadoDetalleConsultarPagos_Click(object sender, PagosHistorialRequestedEventArgs e)
-        {
-            PagosHistorialRequested?.Invoke(this, new PagosHistorialRequestedEventArgs(""));
-
-        }
-
-        private void btnPageClientesListadoDetalleGenerarCarnet_Click(object sender, GenerarCarnetClickedEventArgs e)
-        {
-            //GenerarCarnetClicked?.Invoke(this, GenerarCarnetClickedEventArgs.Empty);
         }
 
         private void btnPageClientesListadoDetalleConsultarPagos_Click(object sender, EventArgs e)
@@ -80,7 +66,7 @@ namespace Club1.UI.Controls
 
         private void btnPageClientesListadoDetalleGenerarCarnet_Click(object sender, EventArgs e)
         {
-            if (socioActual == null) { return; } // ¿Lanzar excepción? ¿Mostrar mensaje de error? ¿Ignorar?
+            if (socioActual == null) { return; }
             if (!socioActual.ClienteEsSocio) { return; }
             
             using FormCarnet carnetForm = new FormCarnet(socioActual);

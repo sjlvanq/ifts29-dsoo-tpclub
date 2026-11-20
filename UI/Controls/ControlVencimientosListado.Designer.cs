@@ -73,7 +73,6 @@
             dataGridVencimientosListadoLista.Size = new Size(757, 445);
             dataGridVencimientosListadoLista.StandardTab = true;
             dataGridVencimientosListadoLista.TabIndex = 1;
-            dataGridVencimientosListadoLista.SelectionChanged += dataGridVencimientosListadoLista_SelectionChanged;
             //
             // lblControlVencimientoListadoHeader
             //
@@ -108,6 +107,5 @@
         private DataGridView dataGridVencimientosListadoLista;
         private BindingSource vencimientoBindingSource;
         private Label lblControlVencimientoListadoHeader;
-        //private ControlVencimientosDetalle controlVencimientoDetalle;
     }
 }

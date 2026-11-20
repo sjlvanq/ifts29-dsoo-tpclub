@@ -41,19 +41,5 @@ namespace Club1.UI.Controls
             this.Enabled = false;
         }
 
-        private void lblPageClientesListadoDetalleSinSeleccion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void ControlClienteDetalleLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

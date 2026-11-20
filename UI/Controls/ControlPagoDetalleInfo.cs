@@ -17,7 +17,6 @@ namespace Club1.UI.Controls
         private string sinSeleccionMsg = "Seleccione un pago\r\npara habilitar los botones\r\nde acción.\r\n";
         private Color sinSeleccionColorLbl = Color.Gray;
         private Color conSeleccionColorLbl = Color.LightGray;
-        private Color conSeleccionColorLblNombre = Color.FromKnownColor(KnownColor.ControlLightLight);
         private Color conSeleccionColorLblHabilitado = Color.LightGreen;
         private Color conSeleccionColorLblInhabilitado = Color.Orange;
         private static readonly Image? imgCarnet = Properties.Resources.es_socio;
@@ -26,7 +25,6 @@ namespace Club1.UI.Controls
         {
             InitializeComponent();
 
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(ControlPagoDetalleInfo));
             lblControlPagoDetalleInfoNombre.ImageAlign = ContentAlignment.TopRight;
             Clear();
 

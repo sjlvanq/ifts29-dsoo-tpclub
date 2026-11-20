@@ -142,8 +142,6 @@ namespace Club1.Data.Repositories
             return pagos;
         }
 
-        //public List
-
         public List<Pago> obtenerPorCliente(int idCliente)
         {
             List<Pago> pagos = new List<Pago>();

@@ -53,24 +53,10 @@ namespace Club1.UI.Controls
 
             IEnumerable<PagoListDTO> resultado = e.Field switch
             {
-                /*
-                nameof(PagoListDTO.IdCuota) => todosLosPagos.Where(p =>
-                    p.IdCuota.ToString().Contains(texto, StringComparison.OrdinalIgnoreCase)),
-                */
-
                 nameof(PagoListDTO.ClienteDni) => todosLosPagos.Where(p =>
                     p.ClienteDni.ToString().Contains(texto, StringComparison.OrdinalIgnoreCase)),
-                
                 nameof(PagoListDTO.ClienteNroCarnet) => todosLosPagos.Where(p =>
                     (p.ClienteNroCarnet ?? string.Empty).Contains(texto, StringComparison.OrdinalIgnoreCase)),
-                
-                    /*
-                                nameof(Pago.Cliente.Nombre) => todosLosPagos.Where(p =>
-                                    p.CienteNombre.ToString().Contains(texto, StringComparison.OrdinalIgnoreCase)),
-
-                                nameof(Pago.Cliente.Apellido) => todosLosPagos.Where(p =>
-                                    p.CienteNombre.ToString().Contains(texto, StringComparison.OrdinalIgnoreCase)),
-                    */
 
                 nameof(Pago.FechaPago) => todosLosPagos.Where(p =>
                     p.FechaPago.ToString().Contains(texto, StringComparison.OrdinalIgnoreCase)),

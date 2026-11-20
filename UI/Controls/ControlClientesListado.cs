@@ -13,7 +13,6 @@ namespace Club1.UI.Controls
 {
     public partial class ControlClientesListado : UserControl
     {
-        public event EventHandler<GenerarCarnetClickedEventArgs>? GenerarCarnetClicked;
         public event EventHandler<PagosHistorialRequestedEventArgs>? PagosHistorialRequested;
         private List<Socio> todosLosSocios = new();
         SocioRepo socioRepo;

@@ -37,20 +37,6 @@ namespace Club1.UI.Controls
         private void MostrarVencimientos(IEnumerable<Vencimiento> vencimientos)
         {
             vencimientoBindingSource.DataSource = vencimientos.ToList();
-            if (vencimientoBindingSource.Count == 0)
-            {
-                //this.controlVencimientosDetalle.MostrarDetalle(null);
-            }
-        }
-
-        private void dataGridVencimientosListadoLista_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridVencimientosListadoLista.SelectedRows.Count == 0)
-            {
-                //this.controlVencimientoDetalle.MostrarDetalle(null);
-                return;
-            }
-            //this.controlVencimientoDetalle.MostrarDetalle(dataGridVencimientosListadoLista.SelectedRows[0].DataBoundItem as PagoListDTO);
         }
 
     }

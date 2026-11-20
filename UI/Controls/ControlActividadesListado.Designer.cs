@@ -71,8 +71,6 @@
             dataGridActividadesListadoLista.Size = new Size(693, 526);
             dataGridActividadesListadoLista.StandardTab = true;
             dataGridActividadesListadoLista.TabIndex = 0;
-            dataGridActividadesListadoLista.CellContentClick += dataGridClientesListadoLista_CellContentClick;
-            dataGridActividadesListadoLista.SelectionChanged += dataGridClientesListadoLista_SelectionChanged;
             // 
             // ControlActividadesListado
             // 

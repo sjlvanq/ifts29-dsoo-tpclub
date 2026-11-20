@@ -402,7 +402,6 @@ namespace Club1.UI.Forms
             Name = "FormLoginAndDbConnection";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Configuración de conexión";
-            Load += FormLoginAndDbConection_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tabControl1.ResumeLayout(false);

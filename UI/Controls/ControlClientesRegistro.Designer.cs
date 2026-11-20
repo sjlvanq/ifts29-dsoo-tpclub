@@ -34,7 +34,6 @@
             lblPageClientesRegistroFieldsFirstName = new Label();
             lblPageClientesRegistroFieldsLastName = new Label();
             lblPageClientesRegistroFieldsPhone = new Label();
-            //lblPageClientesRegistroFieldsHealthCert = new Label();
             lblPageClientesRegistroFieldsCreatedDate = new Label();
             txtPageClientesRegistroFieldsIDNumber = new TextBox();
             txtPageClientesRegistroFieldsFirstName = new TextBox();
@@ -270,7 +269,6 @@
         private Label lblPageClientesRegistroFieldsFirstName;
         private Label lblPageClientesRegistroFieldsLastName;
         private Label lblPageClientesRegistroFieldsPhone;
-        //private Label lblPageClientesRegistroFieldsHealthCert;
         private Label lblPageClientesRegistroFieldsCreatedDate;
         private TextBox txtPageClientesRegistroFieldsIDNumber;
         private TextBox txtPageClientesRegistroFieldsFirstName;

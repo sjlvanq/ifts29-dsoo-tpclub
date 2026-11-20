@@ -70,7 +70,6 @@ namespace Club1.UI.Controls
         {
             cmbControlFiltrosField.SelectedValue = campo;
             txtControlFiltrosSearch.Text = texto;
-            //MessageBox.Show($"Filtro aplicado: {campo} = {texto}");
         }
 
         private void lnkLblControlFiltrosLimpiar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
