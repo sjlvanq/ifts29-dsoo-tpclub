@@ -174,8 +174,7 @@ namespace Club1.UI.Controls
             //
             // grpPagePagosRegistroPago
             //
-            this.grpPagePagosRegistroPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.grpPagePagosRegistroPago.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpPagePagosRegistroPago.Controls.Add(this.grpPagePagosRegistroActividad);
             this.grpPagePagosRegistroPago.Controls.Add(this.grpPagePagosRegistroCuota);
@@ -196,6 +195,8 @@ namespace Club1.UI.Controls
             //
             // grpPagePagosRegistroActividad
             //
+            this.grpPagePagosRegistroActividad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpPagePagosRegistroActividad.Controls.Add(this.cmbPagePagosRegistroActividad);
             this.grpPagePagosRegistroActividad.Controls.Add(this.lblPagePagosRegistroActividad);
             this.grpPagePagosRegistroActividad.Location = new System.Drawing.Point(15, 70);
@@ -228,6 +229,8 @@ namespace Club1.UI.Controls
             //
             // grpPagePagosRegistroCuota
             //
+            this.grpPagePagosRegistroCuota.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpPagePagosRegistroCuota.Controls.Add(this.cmbPagePagosRegistroCuota);
             this.grpPagePagosRegistroCuota.Controls.Add(this.lblPagePagosRegistroCuota);
             this.grpPagePagosRegistroCuota.Location = new System.Drawing.Point(15, 70);
@@ -291,6 +294,8 @@ namespace Club1.UI.Controls
             //
             // cmbPagePagosRegistroMedioPago
             //
+            this.cmbPagePagosRegistroMedioPago.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbPagePagosRegistroMedioPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPagePagosRegistroMedioPago.FormattingEnabled = true;
             this.cmbPagePagosRegistroMedioPago.Items.AddRange(new object[] {
@@ -332,6 +337,7 @@ namespace Club1.UI.Controls
             //
             // ControlPagosRegistro
             //
+            this.AutoScroll = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.grpPagePagosRegistroPago);

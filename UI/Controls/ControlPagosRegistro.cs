@@ -36,6 +36,7 @@ namespace Club1.UI.Controls
 
             actividadesDisponibles = actividadRepo.obtenerTodas();
             CargarActividades();
+            ActualizarPanelTipoPago();
         }
 
         private void CargarActividades()
@@ -82,22 +83,21 @@ namespace Club1.UI.Controls
             lblPagePagosRegistroClienteCarnet.Text = cliente.ClienteEsSocio ? cliente.NroCarnet.ToString() : "No es socio";
             lblPagePagosRegistroClienteAptoFisico.Text = cliente.TieneAptoFisico ? "Sí" : "No";
 
-            if (cliente.ClienteEsSocio)
+            bool esSocio = cliente.ClienteEsSocio;
+            rbPagePagosRegistroTipoCuota.Enabled = esSocio;
+            rbPagePagosRegistroTipoActividad.Enabled = !esSocio;
+            rbPagePagosRegistroTipoCuota.Checked = esSocio;
+            rbPagePagosRegistroTipoActividad.Checked = !esSocio;
+            cmbPagePagosRegistroActividad.SelectedIndex = -1;
+
+            if (esSocio)
             {
-                rbPagePagosRegistroTipoCuota.Enabled = true;
-                rbPagePagosRegistroTipoActividad.Enabled = false;
-                rbPagePagosRegistroTipoCuota.Checked = true;
                 CargarCuotasPendientes(cliente.IdCliente);
-            }
-            else
-            {
-                rbPagePagosRegistroTipoCuota.Enabled = false;
-                rbPagePagosRegistroTipoActividad.Enabled = true;
-                rbPagePagosRegistroTipoActividad.Checked = true;
             }
 
             grpPagePagosRegistroCliente.Visible = true;
             grpPagePagosRegistroPago.Visible = true;
+            ActualizarPanelTipoPago();
         }
 
         private void CargarCuotasPendientes(int idCliente)
@@ -122,16 +122,13 @@ namespace Club1.UI.Controls
 
         private void RbTipo_CheckedChanged(object? sender, EventArgs e)
         {
-            if (rbPagePagosRegistroTipoCuota.Checked)
-            {
-                grpPagePagosRegistroCuota.Visible = true;
-                grpPagePagosRegistroActividad.Visible = false;
-            }
-            else if (rbPagePagosRegistroTipoActividad.Checked)
-            {
-                grpPagePagosRegistroCuota.Visible = false;
-                grpPagePagosRegistroActividad.Visible = true;
-            }
+            ActualizarPanelTipoPago();
+        }
+
+        private void ActualizarPanelTipoPago()
+        {
+            grpPagePagosRegistroCuota.Visible = rbPagePagosRegistroTipoCuota.Checked;
+            grpPagePagosRegistroActividad.Visible = rbPagePagosRegistroTipoActividad.Checked;
         }
 
         private void BtnRegistrar_Click(object? sender, EventArgs e)
@@ -204,6 +201,7 @@ namespace Club1.UI.Controls
             grpPagePagosRegistroCliente.Visible = false;
             grpPagePagosRegistroPago.Visible = false;
             cmbPagePagosRegistroCuota.Items.Clear();
+            cmbPagePagosRegistroActividad.SelectedIndex = -1;
             cmbPagePagosRegistroMedioPago.SelectedIndex = -1;
             clienteActual = null;
             cuotasPendientes.Clear();
